@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leadesia | Acquisition pour Avocats Fiscalistes</title>
+    <meta name="description" content="Générez des dossiers qualifiés en contentieux fiscal. L'agence partenaire des avocats fiscalistes." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                burgundy: '#4a1016', // Approximate from logo
+                cream: '#f8f5f0',    // Light background
+                gold: '#c5a065',     // Accent
+                dark: '#1a1a1a'
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c5a065; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #4a1016; 
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-brand-cream text-brand-dark antialiased">
+    <div id="root"></div>
+  </body>
+</html>
