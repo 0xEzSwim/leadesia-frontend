@@ -32,7 +32,7 @@ const Services: React.FC = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div key={index} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-transparent hover:border-brand-gold/30">
+            <div key={index} className="bg-white p-8 rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-300 border border-transparent hover:border-brand-gold/30">
               <div className="bg-brand-cream w-16 h-16 rounded-full flex items-center justify-center mb-6">
                 {service.icon}
               </div>

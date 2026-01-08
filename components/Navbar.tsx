@@ -68,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
             ))}
             <button
               onClick={onContactClick}
-              className="bg-brand-burgundy text-white px-6 py-2.5 rounded-sm font-medium text-sm hover:bg-opacity-90 transition-all transform hover:-translate-y-0.5 shadow-md"
+              className="btn-burgundy px-6 py-2.5 rounded-sm font-medium text-sm shadow-sm"
             >
               Réserver un audit
             </button>
@@ -95,7 +95,7 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-burgundy hover:bg-gray-50 rounded-md cursor-pointer"
+                className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-burgundy hover:bg-gray-50 rounded-sm cursor-pointer"
               >
                 {item.name}
               </a>
@@ -105,7 +105,7 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
                 setIsMobileMenuOpen(false);
                 onContactClick();
               }}
-              className="w-full mt-4 bg-brand-burgundy text-white px-4 py-3 rounded-sm font-medium text-center shadow-sm"
+              className="w-full mt-4 btn-burgundy px-4 py-3 rounded-sm font-medium text-center shadow-sm"
             >
               Réserver un audit
             </button>

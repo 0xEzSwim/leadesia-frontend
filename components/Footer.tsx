@@ -28,8 +28,8 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           
           <div className="col-span-1 md:col-span-2">
-            <div className="mb-6 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <Logo className="h-10 w-auto" />
+            <div className="mb-6 cursor-pointer w-full max-w-sm" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <Logo className="w-full h-auto" color="#0A0A0A" />
             </div>
             <p className="text-gray-600 text-sm leading-relaxed max-w-sm">
               Leadesia est l'agence de référence pour les avocats fiscalistes ambitieux. Nous combinons technologie et expertise humaine pour garantir votre croissance.

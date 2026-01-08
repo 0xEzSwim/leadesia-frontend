@@ -12,10 +12,10 @@ const ProblemSolution: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-stretch">
           {/* The Problem Side */}
-          <div className="bg-gray-50 p-8 rounded-lg border border-gray-100 relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-1 h-full bg-gray-300 group-hover:bg-red-400 transition-colors"></div>
+          <div className="bg-gray-50 p-8 rounded-sm border border-gray-100 relative overflow-hidden group h-full shadow-sm hover:shadow-xl transition-shadow duration-300">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gray-300 group-hover:bg-red-400 transition-colors duration-300"></div>
             <h3 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
               <TrendingDown className="mr-3 text-red-400" />
               Sans stratégie d'acquisition
@@ -41,27 +41,27 @@ const ProblemSolution: React.FC = () => {
           </div>
 
           {/* The Solution Side */}
-          <div className="bg-brand-burgundy text-white p-8 rounded-lg shadow-2xl relative overflow-hidden transform md:scale-105 transition-transform">
-             <div className="absolute top-0 left-0 w-full h-1 bg-brand-gold"></div>
+          <div className="bg-brand-burgundy text-white p-8 rounded-sm shadow-sm hover:shadow-[0_20px_25px_-5px_rgba(140,100,40,0.6),0_8px_10px_-6px_rgba(140,100,40,0.6)] relative overflow-hidden h-full group transition-all card-solution-hover">
+             <div className="absolute top-0 left-0 w-full h-1 bg-brand-gold group-hover:bg-brand-lightGold transition-colors duration-300 shadow-[0_0_15px_rgba(197,160,101,0.5)] group-hover:shadow-[0_0_20px_rgba(240,213,155,0.6)]"></div>
             <h3 className="text-xl font-bold text-white mb-6 flex items-center">
-              <ShieldCheck className="mr-3 text-brand-gold" />
+              <ShieldCheck className="mr-3 text-brand-gold group-hover:text-brand-lightGold transition-colors duration-300" />
               Avec Leadesia
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <span className="text-brand-gold mr-3 text-lg">✓</span>
+                <span className="text-brand-gold group-hover:text-brand-lightGold transition-colors duration-300 mr-3 text-lg">✓</span>
                 <p className="text-gray-100 text-sm">Flux constant de dossiers qualifiés (Contrôle fiscal, ESFP, contentieux).</p>
               </li>
               <li className="flex items-start">
-                <span className="text-brand-gold mr-3 text-lg">✓</span>
+                <span className="text-brand-gold group-hover:text-brand-lightGold transition-colors duration-300 mr-3 text-lg">✓</span>
                 <p className="text-gray-100 text-sm">Filtrage rigoureux en amont : vous ne parlez qu'aux décideurs.</p>
               </li>
               <li className="flex items-start">
-                <span className="text-brand-gold mr-3 text-lg">✓</span>
+                <span className="text-brand-gold group-hover:text-brand-lightGold transition-colors duration-300 mr-3 text-lg">✓</span>
                 <p className="text-gray-100 text-sm">Exclusivité territoriale et sectorielle garantie.</p>
               </li>
               <li className="flex items-start">
-                <span className="text-brand-gold mr-3 text-lg">✓</span>
+                <span className="text-brand-gold group-hover:text-brand-lightGold transition-colors duration-300 mr-3 text-lg">✓</span>
                 <p className="text-gray-100 text-sm">Focus 100% sur votre cœur de métier et vos plaidoiries.</p>
               </li>
             </ul>

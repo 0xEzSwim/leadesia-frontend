@@ -28,7 +28,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
       ></div>
 
       {/* Modal Content */}
-      <div className="relative bg-white rounded-lg shadow-2xl w-full max-w-md p-8 overflow-hidden animate-fade-in-up">
+      <div className="relative bg-white rounded-sm shadow-2xl w-full max-w-md p-8 overflow-hidden animate-fade-in-up">
         <button 
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
@@ -39,7 +39,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         {!isSubmitted ? (
           <>
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-serif font-bold text-gray-900 mb-2">Audit Gratuit</h3>
+              <h3 className="text-2xl font-serif font-bold text-brand-black mb-2">Audit Gratuit</h3>
               <p className="text-sm text-gray-600">
                 Vérifiez si votre zone géographique est disponible pour notre programme d'acquisition.
               </p>
@@ -51,7 +51,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                 <input 
                   type="text" 
                   required
-                  className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-sm bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all"
                   placeholder="Maître Jean Dupont"
                 />
               </div>
@@ -61,7 +61,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                 <input 
                   type="email" 
                   required
-                  className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-sm bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all"
                   placeholder="jean.dupont@avocat.fr"
                 />
               </div>
@@ -70,7 +70,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">Site web du cabinet</label>
                 <input 
                   type="url" 
-                  className="w-full px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-sm bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all"
                   placeholder="www.cabinet-dupont.fr"
                 />
               </div>
@@ -78,7 +78,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
               <div className="pt-2">
                 <button 
                   type="submit"
-                  className="w-full bg-brand-burgundy text-white font-bold py-3 rounded-md hover:bg-[#380c11] transition-colors shadow-lg"
+                  className="w-full btn-burgundy font-bold py-3 rounded-sm shadow-sm"
                 >
                   Vérifier l'éligibilité
                 </button>
@@ -90,7 +90,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <Check className="w-8 h-8 text-green-600" />
             </div>
-            <h3 className="text-2xl font-serif font-bold text-gray-900 mb-4">Demande Reçue</h3>
+            <h3 className="text-2xl font-serif font-bold text-brand-black mb-4">Demande Reçue</h3>
             <p className="text-gray-600 mb-8">
               Notre équipe va analyser votre profil. Si votre zone est disponible, vous serez contacté sous 24h.
             </p>

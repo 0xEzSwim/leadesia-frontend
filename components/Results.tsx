@@ -17,7 +17,7 @@ const Results: React.FC = () => {
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           
           <div className="mb-12 lg:mb-0">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-black mb-6">
               Des résultats concrets et mesurables
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
@@ -35,7 +35,7 @@ const Results: React.FC = () => {
               </div>
             </div>
 
-            <blockquote className="bg-brand-cream p-6 rounded-lg border-l-4 border-brand-gold italic text-gray-700">
+            <blockquote className="bg-brand-cream p-6 rounded-sm border-l-4 border-brand-gold italic text-gray-700">
               "Avant Leadesia, je passais 30% de mon temps à faire du réseau. Aujourd'hui, je consacre ce temps à mes dossiers, et mon chiffre d'affaires a doublé."
               <footer className="mt-2 text-sm font-bold text-brand-burgundy not-italic">
                 — Maître T., Avocat Fiscaliste à Lyon
@@ -43,7 +43,7 @@ const Results: React.FC = () => {
             </blockquote>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 h-96 w-full">
+          <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 h-96 w-full">
              <h3 className="text-sm font-semibold text-gray-500 uppercase mb-4 text-center">Croissance moyenne du nombre de dossiers (Partenaires)</h3>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
@@ -52,11 +52,11 @@ const Results: React.FC = () => {
                 <YAxis tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
                 <Tooltip 
                   cursor={{ fill: '#f8f5f0' }}
-                  contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+                  contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '2px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
                 />
-                <Bar dataKey="leads" radius={[4, 4, 0, 0]}>
+                <Bar dataKey="leads" radius={[2, 2, 0, 0]}>
                   {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={index === data.length - 1 ? '#4a1016' : '#c5a065'} />
+                    <Cell key={`cell-${index}`} fill={index === data.length - 1 ? '#5D181E' : '#c5a065'} />
                   ))}
                 </Bar>
               </BarChart>

@@ -12,7 +12,7 @@ const App: React.FC = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-slate-800">
+    <div className="min-h-screen flex flex-col font-sans text-brand-black">
       <Navbar onContactClick={() => setIsContactOpen(true)} />
       
       <main className="flex-grow">
