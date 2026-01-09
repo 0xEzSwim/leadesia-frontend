@@ -1,3 +1,2 @@
-// Ce fichier est obsolète.
-// L'entrée de l'application est maintenant src/main.tsx
-// Vous pouvez supprimer ce fichier en toute sécurité.
+// Ce fichier est déprécié.
+// Le point d'entrée de l'application est désormais src/main.tsx

@@ -20,6 +20,7 @@ const App: React.FC = () => {
             <Route path="mentions-legales" element={<LegalMentions />} />
             <Route path="politique-de-confidentialite" element={<PrivacyPolicy />} />
             <Route path="cgu" element={<TermsOfService />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
