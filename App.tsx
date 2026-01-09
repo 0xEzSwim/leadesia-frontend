@@ -7,23 +7,52 @@ import Process from './components/Process';
 import Results from './components/Results';
 import Footer from './components/Footer';
 import ContactModal from './components/ContactModal';
+import LegalMentions from './components/LegalMentions';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
+
+type ViewState = 'home' | 'legal' | 'privacy' | 'terms';
 
 const App: React.FC = () => {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [currentView, setCurrentView] = useState<ViewState>('home');
+
+  // Scroll to top when view changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentView]);
+
+  const handleNavigate = (view: ViewState) => {
+    setCurrentView(view);
+  };
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-brand-black">
-      <Navbar onContactClick={() => setIsContactOpen(true)} />
+      <Navbar 
+        onContactClick={() => setIsContactOpen(true)} 
+        onNavigate={handleNavigate}
+        currentView={currentView}
+      />
       
       <main className="flex-grow">
-        <Hero onContactClick={() => setIsContactOpen(true)} />
-        <ProblemSolution />
-        <Services />
-        <Results />
-        <Process />
+        {currentView === 'home' ? (
+          <>
+            <Hero onContactClick={() => setIsContactOpen(true)} />
+            <ProblemSolution />
+            <Services />
+            <Results />
+            <Process />
+          </>
+        ) : currentView === 'legal' ? (
+          <LegalMentions />
+        ) : currentView === 'privacy' ? (
+          <PrivacyPolicy />
+        ) : (
+          <TermsOfService />
+        )}
       </main>
 
-      <Footer />
+      <Footer onNavigate={handleNavigate} />
 
       <ContactModal 
         isOpen={isContactOpen} 

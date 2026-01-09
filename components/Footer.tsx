@@ -1,24 +1,32 @@
 import React from 'react';
 import Logo from './Logo';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (view: 'home' | 'legal' | 'privacy' | 'terms') => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     if (href === '#') {
+      onNavigate('home');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
-    const element = document.querySelector(href);
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+    // Handle home-page sections
+    if (href.startsWith('#')) {
+      onNavigate('home');
+      // Delay to allow view switch
+      setTimeout(() => {
+        const element = document.querySelector(href);
+        if (element) {
+          const headerOffset = 100;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 100);
     }
   };
 
@@ -28,7 +36,7 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           
           <div className="col-span-1 md:col-span-2">
-            <div className="mb-6 cursor-pointer w-full max-w-sm" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="mb-6 cursor-pointer w-full max-w-sm" onClick={() => onNavigate('home')}>
               <Logo className="w-full h-auto" color="#0A0A0A" />
             </div>
             <p className="text-gray-600 text-sm leading-relaxed max-w-sm">
@@ -49,9 +57,21 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-brand-burgundy mb-4 uppercase text-sm tracking-wider">Légal</h4>
             <ul className="space-y-3 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Mentions Légales</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">Politique de confidentialité</a></li>
-              <li><a href="#" className="hover:text-brand-gold transition-colors">CGV</a></li>
+              <li>
+                <button onClick={() => onNavigate('legal')} className="hover:text-brand-gold transition-colors text-left">
+                  Mentions Légales
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('privacy')} className="hover:text-brand-gold transition-colors text-left">
+                  Politique de confidentialité
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('terms')} className="hover:text-brand-gold transition-colors text-left">
+                  CGU
+                </button>
+              </li>
             </ul>
           </div>
 

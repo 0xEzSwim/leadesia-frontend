@@ -89,14 +89,14 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                 alt="Avocats en réunion" 
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/70 to-transparent p-6 text-white">
+              <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/70 to-transparent p-6 pb-12 text-white">
                 <p className="font-serif italic text-lg">"Leadesia a transformé notre cabinet en 3 mois."</p>
                 <p className="text-sm opacity-80 mt-1">Cabinet fiscaliste associé, Paris VIII</p>
               </div>
             </div>
             
             {/* Floating Card */}
-            <div className="absolute -bottom-8 -left-8 bg-white p-5 rounded-sm shadow-xl border border-gray-100 max-w-xs">
+            <div className="absolute -bottom-8 -left-8 bg-white p-5 rounded-sm shadow-xl border border-gray-100 max-w-xs z-20">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-bold text-gray-400 uppercase">Croissance mensuelle</span>
                 <span className="text-green-500 text-xs font-bold">+127%</span>

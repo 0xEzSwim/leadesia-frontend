@@ -5,9 +5,11 @@ import Logo from './Logo';
 
 interface NavbarProps {
   onContactClick: () => void;
+  onNavigate: (view: 'home' | 'legal' | 'privacy' | 'terms') => void;
+  currentView: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
+const Navbar: React.FC<NavbarProps> = ({ onContactClick, onNavigate, currentView }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -23,6 +25,25 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
     
+    if (currentView !== 'home') {
+      onNavigate('home');
+      // Small delay to allow render before scrolling
+      setTimeout(() => {
+        if (href === '#') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const element = document.querySelector(href);
+          if (element) {
+            const headerOffset = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+        }
+      }, 100);
+      return;
+    }
+
     if (href === '#') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
@@ -41,6 +62,12 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onNavigate('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -50,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ onContactClick }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={handleLogoClick}>
             <Logo className="h-5 md:h-7 w-auto" />
           </div>
 
