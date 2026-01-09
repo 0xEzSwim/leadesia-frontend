@@ -55,7 +55,7 @@ const PrivacyPolicy: React.FC = () => {
               En utilisant notre site, vous consentez à notre politique de confidentialité. Conformément à la loi informatique et libertés, vous disposez d’un droit d’accès, de rectification et de suppression des données vous concernant.
             </p>
             <p className="mt-2">
-              Pour l'exercer, contactez-nous simplement à : <a href="mailto:contact@leadesia.com" className="text-brand-burgundy font-bold hover:underline">contact@leadesia.com</a>.
+              Pour l'exercer, contactez-nous simplement à : <span className="text-brand-burgundy font-bold">contact@leadesia.com</span>.
             </p>
           </section>
 
