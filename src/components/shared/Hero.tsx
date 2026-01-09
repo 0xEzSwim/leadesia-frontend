@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowRight, CheckCircle } from 'lucide-react';
-import Logo from './Logo';
 
 interface HeroProps {
   onContactClick: () => void;
@@ -9,7 +8,8 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
+    const targetId = href.substring(1);
+    const element = document.getElementById(targetId);
     if (element) {
       const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;

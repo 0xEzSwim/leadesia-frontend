@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Users, BarChart3, Search } from 'lucide-react';
+import { Target, Users, Search } from 'lucide-react';
 
 const Services: React.FC = () => {
   const services = [

@@ -1,5 +1,5 @@
 export const ASSETS = {
-  HERO_IMAGE: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop", // Elegant architectural / minimalist
+  HERO_IMAGE: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop", 
   OFFICE_IMAGE: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2301&auto=format&fit=crop",
   MEETING_IMAGE: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2664&auto=format&fit=crop"
 };

@@ -1,32 +1,44 @@
 import React from 'react';
-import Logo from './Logo';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import Logo from '../shared/Logo';
 
-interface FooterProps {
-  onNavigate: (view: 'home' | 'legal' | 'privacy' | 'terms') => void;
-}
+const Footer: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    if (href === '#') {
-      onNavigate('home');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
+    const targetId = href.substring(1); // remove #
 
-    // Handle home-page sections
-    if (href.startsWith('#')) {
-      onNavigate('home');
-      // Delay to allow view switch
-      setTimeout(() => {
-        const element = document.querySelector(href);
-        if (element) {
-          const headerOffset = 100;
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.scrollY - headerOffset;
-          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        }
-      }, 100);
+    if (location.pathname === '/') {
+       // Already on home
+       if (href === '#') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+       } else {
+          const element = document.getElementById(targetId);
+          if (element) {
+            const headerOffset = 100;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
+       }
+    } else {
+       // Navigate to home
+       if (href === '#') {
+         navigate('/');
+       } else {
+         navigate('/' + href);
+       }
+    }
+  };
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
     }
   };
 
@@ -36,7 +48,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           
           <div className="col-span-1 md:col-span-2">
-            <div className="mb-6 cursor-pointer w-full max-w-sm" onClick={() => onNavigate('home')}>
+            <div className="mb-6 cursor-pointer w-full max-w-sm" onClick={handleHomeClick}>
               <Logo className="w-full h-auto" color="#0A0A0A" />
             </div>
             <p className="text-gray-600 text-sm leading-relaxed max-w-sm">
@@ -58,19 +70,19 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <h4 className="font-bold text-brand-burgundy mb-4 uppercase text-sm tracking-wider">Légal</h4>
             <ul className="space-y-3 text-sm text-gray-600">
               <li>
-                <button onClick={() => onNavigate('legal')} className="hover:text-brand-gold transition-colors text-left">
+                <Link to="/mentions-legales" className="hover:text-brand-gold transition-colors block">
                   Mentions Légales
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => onNavigate('privacy')} className="hover:text-brand-gold transition-colors text-left">
+                <Link to="/politique-de-confidentialite" className="hover:text-brand-gold transition-colors block">
                   Politique de confidentialité
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => onNavigate('terms')} className="hover:text-brand-gold transition-colors text-left">
+                <Link to="/cgu" className="hover:text-brand-gold transition-colors block">
                   CGU
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
