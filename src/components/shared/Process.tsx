@@ -5,8 +5,8 @@ const Process: React.FC = () => {
   const steps = [
     {
       icon: <MousePointerClick className="w-6 h-6" />,
-      title: "Acquisition",
-      desc: "Nous déployons nos campagnes ciblées sur des canaux propriétaires pour capter l'attention des contribuables en difficulté."
+      title: "Acquisition Digitale",
+      desc: "Nous déployons des campagnes publicitaires ultra-ciblées sur l'écosystème Meta (Facebook & Instagram) pour capter l'attention des contribuables en recherche de solutions."
     },
     {
       icon: <Filter className="w-6 h-6" />,
@@ -31,7 +31,7 @@ const Process: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Comment ça marche ?</h2>
           <p className="text-brand-cream/80 max-w-2xl mx-auto">
-            Un processus rodé pour transformer des inconnus en clients fidèles, sans effort de votre part.
+            Un processus rodé pour transformer des inconnus en clients fidèles, grâce à la puissance du ciblage publicitaire.
           </p>
         </div>
 

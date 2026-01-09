@@ -5,8 +5,8 @@ const Services: React.FC = () => {
   const services = [
     {
       icon: <Search className="w-8 h-8 text-brand-burgundy" />,
-      title: "Ciblage Haute Précision",
-      description: "Nous identifions les entreprises et particuliers faisant face à des contrôles fiscaux ou ayant des problématiques patrimoniales complexes via des signaux faibles digitaux."
+      title: "Ciblage Algorithmique",
+      description: "Nous exploitons la puissance des régies publicitaires (Meta Ads) pour identifier précisément les entreprises et particuliers confrontés à des problématiques fiscales."
     },
     {
       icon: <Users className="w-8 h-8 text-brand-burgundy" />,
