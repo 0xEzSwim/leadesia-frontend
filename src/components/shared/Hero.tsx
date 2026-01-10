@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, TrendingUp, Facebook, Instagram } from 'lucide-react';
+import { ArrowRight, Facebook, Instagram, CalendarCheck, PhoneCall } from 'lucide-react';
 import ScrollingBenefits from './ScrollingBenefits';
 
 interface HeroProps {
@@ -70,7 +70,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
 
             {/* Hero Visual */}
             <div className="hidden lg:block lg:col-span-1 mt-12 lg:mt-0">
-              <div className="relative rounded-sm overflow-hidden shadow-2xl h-full">
+              <div className="relative rounded-sm overflow-hidden shadow-2xl h-full border-4 border-white">
                 <img 
                   src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600&auto-format=fit=crop" 
                   alt="Avocats en réunion" 
@@ -78,32 +78,19 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
-                {/* KPI Cards Over Image */}
-                <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row gap-4">
-                  <div className="flex-1 bg-white/80 backdrop-blur-md p-4 rounded-sm border border-white/20 shadow-lg">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-brand-burgundy text-white flex items-center justify-center flex-shrink-0">
-                        <TrendingUp size={20} />
-                      </div>
-                      <div>
-                        <p className="font-bold text-brand-black text-lg">+127%</p>
-                        <p className="text-xs text-gray-600">Croissance dossiers signés</p>
-                      </div>
-                    </div>
+                {/* 4 flying icon squares over image */}
+                <div className="absolute bottom-6 right-6 grid grid-cols-2 gap-3">
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:scale-105 hover:-translate-y-1">
+                    <Facebook size={24} className="text-brand-burgundy" fill="currentColor" strokeWidth={0} />
                   </div>
-                   <div className="flex-1 bg-white/80 backdrop-blur-md p-4 rounded-sm border border-white/20 shadow-lg">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-brand-burgundy text-white flex items-center justify-center flex-shrink-0">
-                         <div className="flex -space-x-2">
-                           <Facebook size={14} fill="white" strokeWidth={0} />
-                           <Instagram size={14} />
-                         </div>
-                      </div>
-                      <div>
-                        <p className="font-bold text-brand-black text-lg">Meta Ads</p>
-                        <p className="text-xs text-gray-600">Ciblage algorithmique</p>
-                      </div>
-                    </div>
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:scale-105 hover:-translate-y-1">
+                    <Instagram size={24} className="text-brand-burgundy" />
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:scale-105 hover:-translate-y-1">
+                    <CalendarCheck size={24} className="text-brand-burgundy" />
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:scale-105 hover:-translate-y-1">
+                    <PhoneCall size={24} className="text-brand-burgundy" />
                   </div>
                 </div>
               </div>
