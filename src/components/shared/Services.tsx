@@ -16,7 +16,7 @@ const Services: React.FC = () => {
     {
       icon: <Target className="w-8 h-8 text-brand-burgundy" />,
       title: "Rendez-vous Qualifiés",
-      description: "Nous ne vendons pas de simples contacts. Nous positionnons des rendez-vous téléphoniques ou physiques directement dans votre agenda."
+      description: "Nous ne vendons pas de simples contacts. Nous positionnons des rendez-vous vidéo ou physiques directement dans votre agenda."
     }
   ];
 
