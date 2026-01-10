@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { SIMULATOR_CONSTANTS } from '../../lib/constants';
-import { ArrowRight, TrendingUp, Briefcase, Euro } from 'lucide-react';
+import { LockOpen, TrendingUp, Briefcase, Euro } from 'lucide-react';
 
 interface GrowthSimulatorProps {
   onContactClick: () => void;
@@ -188,7 +188,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
             </div>
             <div className="mt-6 flex justify-center">
               <button onClick={onContactClick} className="w-full sm:w-auto px-8 py-4 btn-burgundy rounded-sm font-medium text-lg shadow-sm flex items-center justify-center gap-2">
-                Obtenir ces résultats ce mois-ci <ArrowRight size={20} />
+                Débloquer ces résultats <LockOpen size={20} />
               </button>
             </div>
           </div>
