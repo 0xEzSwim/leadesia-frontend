@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { Download } from 'lucide-react';
 
-const PANIER_MOYEN = 3500;
+// Panier moyen variable par canal d'acquisition
+const PANIER_MOYEN = {
+  leadesia: 3500,
+  reseautage: 5000,
+  boucheAOreille: 4000,
+};
 
 const dataDossiers = [
   { name: 'Mois 1', leadesia: 2, reseautage: 0, boucheAOreille: 0 },
@@ -13,11 +18,12 @@ const dataDossiers = [
   { name: 'Mois 6', leadesia: 6, reseautage: 0, boucheAOreille: 1 },
 ];
 
+// Calcul du CA en fonction des paniers moyens respectifs
 const dataCA = dataDossiers.map(month => ({
     name: month.name,
-    leadesia: month.leadesia * PANIER_MOYEN,
-    reseautage: month.reseautage * PANIER_MOYEN,
-    boucheAOreille: month.boucheAOreille * PANIER_MOYEN,
+    leadesia: month.leadesia * PANIER_MOYEN.leadesia,
+    reseautage: month.reseautage * PANIER_MOYEN.reseautage,
+    boucheAOreille: month.boucheAOreille * PANIER_MOYEN.boucheAOreille,
 }));
 
 
@@ -83,7 +89,7 @@ const Results: React.FC = () => {
             <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 h-[28rem] w-full flex flex-col">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-sm font-semibold text-gray-500 uppercase">
-                  Comparatif de croissance sur 6 mois (pour un investissement de 1000€/mois)
+                  Comparatif d'évolution moyenne sur 6 mois*
                 </h3>
                 <div className="bg-gray-100 p-1 rounded-sm flex text-xs font-medium">
                   <button 
@@ -124,18 +130,21 @@ const Results: React.FC = () => {
                 </ResponsiveContainer>
               </div>
             </div>
-             <div className="mt-8 text-center">
-              <a
-                href="/rapport.pdf"
-                download="Leadesia-Analyse-Acquisition-Avocats-Fiscalistes.pdf"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-sm font-medium text-sm hover:bg-gray-50 transition-colors duration-300"
-              >
-                <Download size={16} />
-                Télécharger l'analyse complète
-              </a>
-            </div>
+             <p className="text-xs text-gray-400 text-right mt-2 pr-2 italic">
+                *pour un investissement de 1000€/mois
+             </p>
           </div>
+        </div>
 
+        <div className="mt-16 text-center">
+          <a
+            href="/rapport.pdf"
+            download="Rapport - comparaison sur 6 mois des nouvelles affaires obtenues selon le canal marketing.pdf"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-sm font-medium text-sm hover:bg-gray-50 transition-colors duration-300"
+          >
+            <Download size={16} />
+            Télécharger l'analyse complète
+          </a>
         </div>
       </div>
     </section>
