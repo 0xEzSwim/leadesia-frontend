@@ -33,7 +33,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
           <div className="lg:grid lg:grid-cols-5 lg:gap-16 lg:items-stretch">
             
             {/* Text Content */}
-            <div className="lg:col-span-2 flex flex-col justify-center text-center lg:text-left">
+            <div className="lg:col-span-3 flex flex-col justify-center text-center lg:text-left">
               <div>
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-brand-burgundy/5 border border-brand-burgundy/10 text-brand-burgundy text-xs font-semibold tracking-wide uppercase mb-6">
                   <span className="w-2 h-2 rounded-full bg-brand-burgundy mr-2"></span>
@@ -69,7 +69,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             </div>
 
             {/* Hero Visual */}
-            <div className="hidden lg:block lg:col-span-3 mt-12 lg:mt-0">
+            <div className="hidden lg:block lg:col-span-2 mt-12 lg:mt-0">
               <div className="relative rounded-sm overflow-hidden shadow-2xl h-full border-4 border-white">
                 <img 
                   src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600&auto-format=fit=crop" 
