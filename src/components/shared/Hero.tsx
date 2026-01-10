@@ -30,17 +30,17 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-brand-burgundy/5 rounded-full blur-3xl opacity-50"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-stretch">
+          <div className="lg:grid lg:grid-cols-5 lg:gap-16 lg:items-stretch">
             
             {/* Text Content */}
-            <div className="lg:col-span-1 flex flex-col justify-center text-center lg:text-left">
+            <div className="lg:col-span-2 flex flex-col justify-center text-center lg:text-left">
               <div>
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-brand-burgundy/5 border border-brand-burgundy/10 text-brand-burgundy text-xs font-semibold tracking-wide uppercase mb-6">
                   <span className="w-2 h-2 rounded-full bg-brand-burgundy mr-2"></span>
                   Réservé aux avocats fiscalistes
                 </div>
                 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-brand-black leading-tight mb-6">
+                <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-black leading-tight mb-6">
                   Ne cherchez plus vos clients.<br />
                   <span className="text-brand-burgundy">Choisissez vos dossiers.</span>
                 </h1>
@@ -69,7 +69,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             </div>
 
             {/* Hero Visual */}
-            <div className="hidden lg:block lg:col-span-1 mt-12 lg:mt-0">
+            <div className="hidden lg:block lg:col-span-3 mt-12 lg:mt-0">
               <div className="relative rounded-sm overflow-hidden shadow-2xl h-full border-4 border-white">
                 <img 
                   src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600&auto-format=fit=crop" 
