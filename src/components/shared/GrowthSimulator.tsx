@@ -166,7 +166,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
 
             <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 h-[24rem] w-full flex flex-col">
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase">Projection sur 6 mois*</h3>
+                <h3 className="text-sm font-semibold text-gray-500 uppercase">Projection sur 6 mois</h3>
                 <div className="bg-gray-100 p-1 rounded-sm flex text-xs font-medium">
                   <button onClick={() => setView('dossiers')} className={`px-3 py-1 rounded-sm transition-colors ${view === 'dossiers' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}>Dossiers</button>
                   <button onClick={() => setView('ca')} className={`px-3 py-1 rounded-sm transition-colors ${view === 'ca' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}>C.A.</button>
@@ -186,17 +186,15 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                 </ResponsiveContainer>
               </div>
             </div>
-            <div className="mt-6 flex justify-center">
-              <button onClick={onContactClick} className="w-full sm:w-auto px-8 py-4 btn-burgundy rounded-sm font-medium text-lg shadow-sm flex items-center justify-center gap-2">
-                Débloquer ces résultats <LockOpen size={20} />
-              </button>
-            </div>
+            <p className="text-xs text-gray-500 italic text-right mt-2 pr-2">
+              *Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
+            </p>
           </div>
         </div>
-        <div className="text-center mt-12">
-            <p className="text-xs text-gray-500 italic max-w-3xl mx-auto">
-                *Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
-            </p>
+        <div className="mt-8 flex justify-center">
+          <button onClick={onContactClick} className="w-full sm:w-auto px-8 py-4 btn-burgundy rounded-sm font-medium text-lg shadow-sm flex items-center justify-center gap-2">
+            Débloquer ces résultats <LockOpen size={20} />
+          </button>
         </div>
       </div>
     </section>
