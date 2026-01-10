@@ -78,9 +78,9 @@ const Results: React.FC = () => {
             </div>
 
             <blockquote className="bg-brand-cream p-6 rounded-sm border-l-4 border-brand-gold italic text-gray-700">
-              "Avant Leadesia, je passais 30% de mon temps à faire du réseau. Aujourd'hui, je consacre ce temps à mes dossiers, et mon chiffre d'affaires a doublé."
+              "On est sur un marché hyper concurrentiel, avec des acteurs non-avocats qui empiètent sur le marché du droit, et il faut absolument qu’on montre qu’on offre des garanties que l’on est les seuls à offrir à nos clients. Et ça, pour le faire connaître, il n’y a que la publicité."
               <footer className="mt-2 text-sm font-bold text-brand-burgundy not-italic">
-                — Maître T., Avocat Fiscaliste à Lyon
+                — Maître Deniau, Ancien Membre du Conseil de l'Ordre
               </footer>
             </blockquote>
           </div>
