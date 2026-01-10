@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle, TrendingUp } from 'lucide-react';
+import { ArrowRight, TrendingUp, Lock, Filter, CalendarCheck } from 'lucide-react';
 
 interface HeroProps {
   onContactClick: () => void;
@@ -67,20 +67,20 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
 
             <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-y-4 gap-x-8 text-sm text-gray-500 font-medium">
               <div className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-brand-gold" />
-                <span>Exclusivité sectorielle</span>
+                <Lock size={16} className="text-brand-gold" />
+                <span>Exclusivité garantie</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-brand-gold" />
-                <span>Prospects qualifiés</span>
+                <Filter size={16} className="text-brand-gold" />
+                <span>Des clients, pas des curieux</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle size={16} className="text-brand-gold" />
-                <span>R.O.I mesurable</span>
+                <CalendarCheck size={16} className="text-brand-gold" />
+                <span>Flux de dossiers constant</span>
               </div>
               <div className="flex items-center gap-2">
                 <TrendingUp size={16} className="text-brand-gold" />
-                <span>Jusqu'à 2x plus de dossiers signés</span>
+                <span>Jusqu'à 2x plus de dossiers</span>
               </div>
             </div>
           </div>

@@ -11,6 +11,8 @@ export default defineConfig(({ mode }) => ({
   plugins: [react(), mode === "development"].filter(Boolean),
   resolve: {
     alias: {
+      // FIX: `__dirname` is not available in ES modules.
+      // We resolve from the current directory, as Vite is typically run from the project root.
       "@": path.resolve(__dirname, "./src"),
     },
   },

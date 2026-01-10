@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { Download } from 'lucide-react';
 
 const PANIER_MOYEN = 3500;
 
 const dataDossiers = [
   { name: 'Mois 1', leadesia: 2, reseautage: 0, boucheAOreille: 0 },
   { name: 'Mois 2', leadesia: 3, reseautage: 1, boucheAOreille: 0 },
-  { name: 'Mois 3', leadesia: 4, reseautage: 1, boucheAOreille: 0 },
+  { name: 'Mois 3', leadesia: 4, reseautage: 0, boucheAOreille: 0 },
   { name: 'Mois 4', leadesia: 5, reseautage: 1, boucheAOreille: 1 },
-  { name: 'Mois 5', leadesia: 5, reseautage: 2, boucheAOreille: 1 },
-  { name: 'Mois 6', leadesia: 6, reseautage: 1, boucheAOreille: 2 },
+  { name: 'Mois 5', leadesia: 5, reseautage: 2, boucheAOreille: 0 },
+  { name: 'Mois 6', leadesia: 6, reseautage: 0, boucheAOreille: 1 },
 ];
 
 const dataCA = dataDossiers.map(month => ({
@@ -78,48 +79,60 @@ const Results: React.FC = () => {
             </blockquote>
           </div>
 
-          <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 h-[28rem] w-full flex flex-col">
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-sm font-semibold text-gray-500 uppercase">
-                Comparatif de croissance sur 6 mois
-              </h3>
-              <div className="bg-gray-100 p-1 rounded-sm flex text-xs font-medium">
-                <button 
-                  onClick={() => setView('dossiers')}
-                  className={`px-3 py-1 rounded-sm transition-colors ${view === 'dossiers' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}
-                >
-                  Dossiers
-                </button>
-                <button 
-                  onClick={() => setView('ca')}
-                  className={`px-3 py-1 rounded-sm transition-colors ${view === 'ca' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}
-                >
-                  C.A.
-                </button>
+          <div>
+            <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 h-[28rem] w-full flex flex-col">
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-sm font-semibold text-gray-500 uppercase">
+                  Comparatif de croissance sur 6 mois (pour un investissement de 1000€/mois)
+                </h3>
+                <div className="bg-gray-100 p-1 rounded-sm flex text-xs font-medium">
+                  <button 
+                    onClick={() => setView('dossiers')}
+                    className={`px-3 py-1 rounded-sm transition-colors ${view === 'dossiers' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}
+                  >
+                    Dossiers
+                  </button>
+                  <button 
+                    onClick={() => setView('ca')}
+                    className={`px-3 py-1 rounded-sm transition-colors ${view === 'ca' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}
+                  >
+                    C.A.
+                  </button>
+                </div>
+              </div>
+              
+              <div className="flex-grow">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                    <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
+                    <YAxis 
+                      tick={{ fontSize: 12, fill: '#666' }} 
+                      axisLine={false} 
+                      tickLine={false}
+                      tickFormatter={(value) => view === 'ca' ? `${value / 1000}k` : value}
+                    />
+                    <Tooltip 
+                      cursor={{ fill: '#f8f5f0' }}
+                      content={<CustomTooltip view={view} />}
+                    />
+                    <Legend wrapperStyle={{fontSize: "12px"}} />
+                    <Bar dataKey="leadesia" name="Publicité (via Leadesia)" fill="#5D181E" radius={[2, 2, 0, 0]} />
+                    <Bar dataKey="reseautage" name="Réseautage & Dîners" fill="#c5a065" radius={[2, 2, 0, 0]} />
+                    <Bar dataKey="boucheAOreille" name="Bouche-à-oreille" fill="#a0aec0" radius={[2, 2, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
             </div>
-            
-            <div className="flex-grow">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                  <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
-                  <YAxis 
-                    tick={{ fontSize: 12, fill: '#666' }} 
-                    axisLine={false} 
-                    tickLine={false}
-                    tickFormatter={(value) => view === 'ca' ? `${value / 1000}k` : value}
-                  />
-                  <Tooltip 
-                    cursor={{ fill: '#f8f5f0' }}
-                    content={<CustomTooltip view={view} />}
-                  />
-                  <Legend wrapperStyle={{fontSize: "12px"}} />
-                  <Bar dataKey="leadesia" name="Publicité (via Leadesia)" fill="#5D181E" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="reseautage" name="Réseautage & Dîners" fill="#c5a065" radius={[2, 2, 0, 0]} />
-                  <Bar dataKey="boucheAOreille" name="Bouche-à-oreille" fill="#a0aec0" radius={[2, 2, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
+             <div className="mt-8 text-center">
+              <a
+                href="/rapport.pdf"
+                download="Leadesia-Analyse-Acquisition-Avocats-Fiscalistes.pdf"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-sm font-medium text-sm hover:bg-gray-50 transition-colors duration-300"
+              >
+                <Download size={16} />
+                Télécharger l'analyse complète
+              </a>
             </div>
           </div>
 
