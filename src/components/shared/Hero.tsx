@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, TrendingUp, Lock, Filter, CalendarCheck } from 'lucide-react';
+import { ArrowRight, TrendingUp, Lock, Filter, CalendarCheck, Scale } from 'lucide-react';
 
 interface HeroProps {
   onContactClick: () => void;
@@ -69,6 +69,10 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
               <div className="flex items-center gap-2">
                 <Lock size={16} className="text-brand-gold" />
                 <span>Exclusivité garantie</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Scale size={16} className="text-brand-gold" />
+                <span>Déontologie respectée</span>
               </div>
               <div className="flex items-center gap-2">
                 <Filter size={16} className="text-brand-gold" />
