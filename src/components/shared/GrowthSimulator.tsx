@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { SIMULATOR_CONSTANTS } from '../../lib/constants';
 import { ArrowRight, TrendingUp, Briefcase, Euro } from 'lucide-react';
 
@@ -39,26 +39,45 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
   const [investment, setInvestment] = useState(1000);
   const [avgFee, setAvgFee] = useState(3500);
   const [currentCases, setCurrentCases] = useState(1);
+  const [reinvestment, setReinvestment] = useState(0);
   const [view, setView] = useState<'dossiers' | 'ca'>('dossiers');
 
   const calculations = useMemo(() => {
     const { META_BUDGET_RATIO, COST_PER_LEAD, SIGNATURE_CONVERSION_RATE } = SIMULATOR_CONSTANTS;
-    
-    const newCasesLeadesia = (investment * META_BUDGET_RATIO / COST_PER_LEAD) * SIGNATURE_CONVERSION_RATE;
-    const additionalMonthlyRevenue = newCasesLeadesia * avgFee;
+    const SCALE_EFFICIENCY_FACTOR = 0.95;
+
+    // KPI calculation for the first month
+    const newCasesLeadesiaMonth1 = Math.ceil((investment * META_BUDGET_RATIO / COST_PER_LEAD) * SIGNATURE_CONVERSION_RATE);
+    const additionalMonthlyRevenue = newCasesLeadesiaMonth1 * avgFee;
     const roi = investment > 0 ? (additionalMonthlyRevenue - investment) / investment : 0;
     
-    const chartData = Array.from({ length: 6 }, (_, i) => {
-      const month = `Mois ${i + 1}`;
-      return {
-        name: month,
-        current: view === 'dossiers' ? currentCases : (currentCases * avgFee),
-        leadesia: view === 'dossiers' ? (currentCases + newCasesLeadesia) : ((currentCases + newCasesLeadesia) * avgFee),
-      };
-    });
+    // Iterative calculation for the 6-month chart
+    const results = [];
+    let monthlyInvestment = investment;
+    let effectiveCPL = COST_PER_LEAD;
 
-    return { newCasesLeadesia, additionalMonthlyRevenue, roi, chartData };
-  }, [investment, avgFee, currentCases, view]);
+    for (let i = 0; i < 6; i++) {
+        const newCasesThisMonth = Math.ceil(((monthlyInvestment * META_BUDGET_RATIO) / effectiveCPL) * SIGNATURE_CONVERSION_RATE);
+        const totalProjectedCases = currentCases + newCasesThisMonth;
+        const projectedRevenue = totalProjectedCases * avgFee;
+
+        results.push({
+            name: `Mois ${i + 1}`,
+            current: view === 'dossiers' ? currentCases : (currentCases * avgFee),
+            leadesia: view === 'dossiers' ? totalProjectedCases : projectedRevenue,
+        });
+        
+        // Prepare for next month
+        const revenueFromNewCases = newCasesThisMonth * avgFee;
+        const profit = revenueFromNewCases - monthlyInvestment;
+        const reinvestedAmount = Math.min(Math.max(0, profit), reinvestment);
+        
+        monthlyInvestment = investment + reinvestedAmount;
+        effectiveCPL = effectiveCPL / SCALE_EFFICIENCY_FACTOR;
+    }
+
+    return { newCasesLeadesia: newCasesLeadesiaMonth1, additionalMonthlyRevenue, roi, chartData: results };
+  }, [investment, avgFee, currentCases, reinvestment, view]);
 
   return (
     <section id="simulateur" className={`py-24 scroll-mt-24 ${isPage ? '' : 'bg-white'}`}>
@@ -70,7 +89,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
               Projetez la croissance de votre cabinet
             </h3>
             <p className="text-gray-600 mt-4">
-              Ajustez les curseurs pour visualiser en temps réel l'impact de notre service sur votre volume de dossiers et votre chiffre d'affaires.
+              Ajustez les paramètres pour visualiser en temps réel l'impact de notre service sur votre volume de dossiers et votre chiffre d'affaires.
             </p>
           </div>
         )}
@@ -83,7 +102,10 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                 <label htmlFor="investment" className="block text-sm font-medium text-gray-700">Investissement mensuel</label>
                 <div className="flex items-center gap-4 mt-2">
                   <input id="investment" type="range" min="500" max="5000" step="100" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
-                  <span className="font-bold text-brand-burgundy text-lg w-24 text-right">{formatCurrency(investment)}</span>
+                  <div className="relative w-28">
+                    <input type="number" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
+                    <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">€</span>
+                  </div>
                 </div>
               </div>
               <div>
@@ -97,7 +119,19 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                 <label htmlFor="currentCases" className="block text-sm font-medium text-gray-700">Dossiers actuels / mois</label>
                 <div className="flex items-center gap-4 mt-2">
                   <input id="currentCases" type="range" min="0" max="10" step="1" value={currentCases} onChange={(e) => setCurrentCases(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
-                  <span className="font-bold text-brand-burgundy text-lg w-24 text-right">{currentCases}</span>
+                   <div className="relative w-28">
+                    <input type="number" value={currentCases} onChange={(e) => setCurrentCases(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
+                  </div>
+                </div>
+              </div>
+               <div>
+                <label htmlFor="reinvestment" className="block text-sm font-medium text-gray-700">Réinvestissement des profits / mois</label>
+                <div className="flex items-center gap-4 mt-2">
+                  <input id="reinvestment" type="range" min="0" max="5000" step="100" value={reinvestment} onChange={(e) => setReinvestment(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+                  <div className="relative w-28">
+                    <input type="number" value={reinvestment} onChange={(e) => setReinvestment(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
+                    <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">€</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -108,17 +142,17 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <Briefcase className="mx-auto text-brand-gold mb-2" />
                   <span className="block text-2xl font-bold text-brand-burgundy">+{formatNumber(calculations.newCasesLeadesia)}</span>
-                  <span className="text-xs text-gray-500 font-medium uppercase">Nouveaux dossiers</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase">Nouveaux dossiers (Mois 1)</span>
                </div>
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <Euro className="mx-auto text-brand-gold mb-2" />
                   <span className="block text-2xl font-bold text-brand-burgundy">+{formatCurrency(calculations.additionalMonthlyRevenue)}</span>
-                  <span className="text-xs text-gray-500 font-medium uppercase">C.A. additionnel</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase">C.A. additionnel (Mois 1)</span>
                </div>
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <TrendingUp className="mx-auto text-brand-gold mb-2" />
                   <span className="block text-2xl font-bold text-brand-burgundy">x{Math.max(0, calculations.roi + 1).toFixed(1)}</span>
-                  <span className="text-xs text-gray-500 font-medium uppercase">Retour sur Invest.</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase">Retour sur Invest. (Mois 1)</span>
                </div>
             </div>
 
@@ -132,19 +166,15 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
               </div>
               <div className="flex-grow">
                 <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={calculations.chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <LineChart data={calculations.chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
                     <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
                     <YAxis tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} tickFormatter={(value) => view === 'ca' ? `${value / 1000}k` : value} />
-                    <Tooltip content={<CustomTooltip view={view} />} />
+                    <Tooltip cursor={{ stroke: '#c5a065', strokeDasharray: '3 3' }} content={<CustomTooltip view={view} />} />
                     <Legend wrapperStyle={{fontSize: "12px"}} verticalAlign="top" align="right" />
-                    <defs>
-                      <linearGradient id="colorLeadesia" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#5D181E" stopOpacity={0.8}/><stop offset="95%" stopColor="#5D181E" stopOpacity={0}/></linearGradient>
-                      <linearGradient id="colorCurrent" x1="0" y1="0" x2="0" y2="1"><stop offset="5%" stopColor="#a0aec0" stopOpacity={0.8}/><stop offset="95%" stopColor="#a0aec0" stopOpacity={0}/></linearGradient>
-                    </defs>
-                    <Area type="monotone" dataKey="current" name="Situation Actuelle" stroke="#a0aec0" fill="url(#colorCurrent)" strokeWidth={2} />
-                    <Area type="monotone" dataKey="leadesia" name="Projection Leadesia" stroke="#5D181E" fill="url(#colorLeadesia)" strokeWidth={2} />
-                  </AreaChart>
+                    <Line type="monotone" dataKey="current" name="Situation Actuelle" stroke="#a0aec0" strokeWidth={3} dot={{ r: 4, fill: '#a0aec0' }} activeDot={{ r: 6 }}/>
+                    <Line type="monotone" dataKey="leadesia" name="Projection Leadesia" stroke="#5D181E" strokeWidth={3} dot={{ r: 4, fill: '#5D181E' }} activeDot={{ r: 6 }}/>
+                  </LineChart>
                 </ResponsiveContainer>
               </div>
             </div>
@@ -156,8 +186,8 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
           </div>
         </div>
         <div className="text-center mt-12">
-            <p className="text-xs text-gray-500 italic max-w-2xl mx-auto">
-                *Hypothèses de calcul : Les projections sont basées sur nos données de performance moyennes. Le coût d'acquisition total par client signé (budget publicitaire et frais de gestion inclus) est estimé à 1200€. Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
+            <p className="text-xs text-gray-500 italic max-w-3xl mx-auto">
+                *Hypothèses de calcul : Les projections sont basées sur nos données de performance moyennes (CPL initial de 300€, taux de signature de 50%). Une augmentation du CPL de ~5% par mois est simulée pour refléter les coûts de scaling sur Meta. Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
             </p>
         </div>
       </div>

@@ -14,6 +14,6 @@ export const NAVIGATION = [
 // Simulator Constants
 export const SIMULATOR_CONSTANTS = {
   META_BUDGET_RATIO: 0.5,
-  COST_PER_LEAD: 300, // CPL Calendrier
+  COST_PER_LEAD: 65, // CPL Calendrier
   SIGNATURE_CONVERSION_RATE: 0.5,
 };
