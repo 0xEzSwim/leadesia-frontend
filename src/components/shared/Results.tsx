@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { Download } from 'lucide-react';
+import { BookSearch } from 'lucide-react';
 
 // Panier moyen variable par canal d'acquisition
 const PANIER_MOYEN = {
@@ -139,11 +139,12 @@ const Results: React.FC = () => {
         <div className="mt-16 text-center">
           <a
             href="/rapport.pdf"
-            download="Rapport - comparaison sur 6 mois des nouvelles affaires obtenues selon le canal marketing.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-sm font-medium text-sm hover:bg-gray-50 transition-colors duration-300"
           >
-            <Download size={16} />
-            Télécharger l'analyse complète
+            <BookSearch size={16} />
+            Voir l'analyse complète
           </a>
         </div>
       </div>
