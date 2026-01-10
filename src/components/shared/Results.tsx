@@ -1,16 +1,51 @@
-import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import React, { useState } from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
-const data = [
-  { name: 'Mois 1', leads: 4 },
-  { name: 'Mois 2', leads: 9 },
-  { name: 'Mois 3', leads: 15 },
-  { name: 'Mois 4', leads: 22 },
-  { name: 'Mois 5', leads: 28 },
-  { name: 'Mois 6', leads: 35 },
+const PANIER_MOYEN = 3500;
+
+const dataDossiers = [
+  { name: 'Mois 1', leadesia: 2, reseautage: 0, boucheAOreille: 0 },
+  { name: 'Mois 2', leadesia: 3, reseautage: 1, boucheAOreille: 0 },
+  { name: 'Mois 3', leadesia: 4, reseautage: 1, boucheAOreille: 0 },
+  { name: 'Mois 4', leadesia: 5, reseautage: 1, boucheAOreille: 1 },
+  { name: 'Mois 5', leadesia: 5, reseautage: 2, boucheAOreille: 1 },
+  { name: 'Mois 6', leadesia: 6, reseautage: 1, boucheAOreille: 2 },
 ];
 
+const dataCA = dataDossiers.map(month => ({
+    name: month.name,
+    leadesia: month.leadesia * PANIER_MOYEN,
+    reseautage: month.reseautage * PANIER_MOYEN,
+    boucheAOreille: month.boucheAOreille * PANIER_MOYEN,
+}));
+
+
+const CustomTooltip = ({ active, payload, label, view }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white p-4 rounded-sm shadow-lg border border-gray-200">
+        <p className="font-bold text-gray-800">{label}</p>
+        {payload.map((pld: any, index: number) => (
+          <div key={index} style={{ color: pld.fill }}>
+            {`${pld.name}: `}
+            <strong>
+              {view === 'ca'
+                ? `${pld.value.toLocaleString('fr-FR')} €`
+                : `${pld.value} ${pld.value > 1 ? 'dossiers' : 'dossier'}`}
+            </strong>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return null;
+};
+
+
 const Results: React.FC = () => {
+  const [view, setView] = useState('dossiers'); // 'dossiers' or 'ca'
+  const chartData = view === 'dossiers' ? dataDossiers : dataCA;
+
   return (
     <section id="resultats" className="py-24 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,10 +53,10 @@ const Results: React.FC = () => {
           
           <div className="mb-12 lg:mb-0">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-black mb-6">
-              Des résultats concrets et mesurables
+              Des résultats concrets, une croissance prévisible
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
-              Nos partenaires constatent une augmentation significative de leur chiffre d'affaires dès le premier trimestre. Fini l'incertitude du mois suivant.
+              La publicité ciblée est le seul levier offrant un volume de dossiers prévisible et scalable. Fini l'incertitude du mois suivant, place à une croissance maîtrisée.
             </p>
             
             <div className="grid grid-cols-2 gap-6 mb-8">
@@ -43,24 +78,49 @@ const Results: React.FC = () => {
             </blockquote>
           </div>
 
-          <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 h-96 w-full">
-             <h3 className="text-sm font-semibold text-gray-500 uppercase mb-4 text-center">Croissance moyenne du nombre de dossiers (Partenaires)</h3>
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
-                <Tooltip 
-                  cursor={{ fill: '#f8f5f0' }}
-                  contentStyle={{ backgroundColor: '#fff', border: '1px solid #e5e7eb', borderRadius: '2px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-                />
-                <Bar dataKey="leads" radius={[2, 2, 0, 0]}>
-                  {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={index === data.length - 1 ? '#5D181E' : '#c5a065'} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
+          <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 h-[28rem] w-full flex flex-col">
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-sm font-semibold text-gray-500 uppercase">
+                Comparatif de croissance sur 6 mois
+              </h3>
+              <div className="bg-gray-100 p-1 rounded-sm flex text-xs font-medium">
+                <button 
+                  onClick={() => setView('dossiers')}
+                  className={`px-3 py-1 rounded-sm transition-colors ${view === 'dossiers' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}
+                >
+                  Dossiers
+                </button>
+                <button 
+                  onClick={() => setView('ca')}
+                  className={`px-3 py-1 rounded-sm transition-colors ${view === 'ca' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}
+                >
+                  C.A.
+                </button>
+              </div>
+            </div>
+            
+            <div className="flex-grow">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                  <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
+                  <YAxis 
+                    tick={{ fontSize: 12, fill: '#666' }} 
+                    axisLine={false} 
+                    tickLine={false}
+                    tickFormatter={(value) => view === 'ca' ? `${value / 1000}k` : value}
+                  />
+                  <Tooltip 
+                    cursor={{ fill: '#f8f5f0' }}
+                    content={<CustomTooltip view={view} />}
+                  />
+                  <Legend wrapperStyle={{fontSize: "12px"}} />
+                  <Bar dataKey="leadesia" name="Publicité (via Leadesia)" fill="#5D181E" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="reseautage" name="Réseautage & Dîners" fill="#c5a065" radius={[2, 2, 0, 0]} />
+                  <Bar dataKey="boucheAOreille" name="Bouche-à-oreille" fill="#a0aec0" radius={[2, 2, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
         </div>

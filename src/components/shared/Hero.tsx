@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, TrendingUp } from 'lucide-react';
 
 interface HeroProps {
   onContactClick: () => void;
@@ -78,6 +78,10 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                 <CheckCircle size={16} className="text-brand-gold" />
                 <span>R.O.I mesurable</span>
               </div>
+              <div className="flex items-center gap-2">
+                <TrendingUp size={16} className="text-brand-gold" />
+                <span>Jusqu'à 2x plus de dossiers signés</span>
+              </div>
             </div>
           </div>
 
@@ -85,7 +89,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
           <div className="hidden lg:block lg:col-span-5 mt-12 lg:mt-0 relative">
             <div className="relative rounded-sm overflow-hidden shadow-2xl border-4 border-white">
               <img 
-                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600&auto-format&fit=crop" 
                 alt="Avocats en réunion" 
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />

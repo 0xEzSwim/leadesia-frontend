@@ -23,7 +23,7 @@ const ProblemSolution: React.FC = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <span className="text-red-400 mr-3 text-lg">•</span>
-                <p className="text-gray-600 text-sm">Dépendance au bouche-à-oreille (imprévisible et lent).</p>
+                <p className="text-gray-600 text-sm">Dépendance au bouche-à-oreille (<strong className="font-semibold">0-1 dossier/mois</strong>, imprévisible et lent).</p>
               </li>
               <li className="flex items-start">
                 <span className="text-red-400 mr-3 text-lg">•</span>
@@ -50,7 +50,7 @@ const ProblemSolution: React.FC = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <span className="text-brand-gold group-hover:text-brand-lightGold transition-colors duration-300 mr-3 text-lg">✓</span>
-                <p className="text-gray-100 text-sm">Flux constant de dossiers qualifiés (Contrôle fiscal, ESFP, contentieux).</p>
+                <p className="text-gray-100 text-sm">Flux prévisible de dossiers qualifiés (<strong className="font-semibold">jusqu'à 4-5/mois</strong> en rythme de croisière).</p>
               </li>
               <li className="flex items-start">
                 <span className="text-brand-gold group-hover:text-brand-lightGold transition-colors duration-300 mr-3 text-lg">✓</span>
