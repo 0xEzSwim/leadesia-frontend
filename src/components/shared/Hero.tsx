@@ -70,7 +70,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
 
             {/* Hero Visual */}
             <div className="hidden lg:block lg:col-span-1 mt-12 lg:mt-0">
-              <div className="relative rounded-lg overflow-hidden shadow-2xl h-full border-4 border-white">
+              <div className="relative rounded-sm overflow-hidden shadow-2xl h-full border-4 border-white">
                 <img 
                   src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600&auto-format=fit=crop" 
                   alt="Avocats en réunion" 
@@ -80,16 +80,16 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
 
                 {/* 4 flying icon squares over image */}
                 <div className="absolute bottom-6 right-6 grid grid-cols-2 gap-3">
-                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-lg border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:scale-105 hover:-translate-y-1">
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:-translate-y-1">
                     <Facebook size={24} className="text-brand-burgundy" fill="currentColor" strokeWidth={0} />
                   </div>
-                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-lg border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:scale-105 hover:-translate-y-1">
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:-translate-y-1">
                     <Instagram size={24} className="text-brand-burgundy" />
                   </div>
-                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-lg border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:scale-105 hover:-translate-y-1">
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:-translate-y-1">
                     <CalendarCheck size={24} className="text-brand-burgundy" />
                   </div>
-                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-lg border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:scale-105 hover:-translate-y-1">
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:-translate-y-1">
                     <PhoneCall size={24} className="text-brand-burgundy" />
                   </div>
                 </div>

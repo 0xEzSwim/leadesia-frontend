@@ -137,18 +137,6 @@ const Results: React.FC = () => {
              </p>
           </div>
         </div>
-
-        <div className="mt-16 text-center">
-          <a
-            href="/rapport.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-sm font-medium text-sm hover:bg-gray-50 transition-colors duration-300"
-          >
-            <BookSearch size={16} />
-            Voir l'analyse complète
-          </a>
-        </div>
       </div>
     </section>
   );
