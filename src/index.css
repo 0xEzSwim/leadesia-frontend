@@ -125,3 +125,37 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Custom styles for range input thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #5D181E;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px #5D181E;
+  transition: background-color 0.2s;
+  margin-top: -8px; /* Center thumb on track */
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #5D181E;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px #5D181E;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  background: #c5a065;
+  box-shadow: 0 0 0 2px #c5a065;
+}
+input[type="range"]:hover::-moz-range-thumb {
+  background: #c5a065;
+  box-shadow: 0 0 0 2px #c5a065;
+}

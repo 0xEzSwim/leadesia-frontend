@@ -7,6 +7,7 @@ import LegalMentions from './pages/LegalMentions';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import NotFound from './pages/NotFound';
+import Simulator from './pages/Simulator';
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Index />} />
+            <Route path="simulateur" element={<Simulator />} />
             <Route path="mentions-legales" element={<LegalMentions />} />
             <Route path="politique-de-confidentialite" element={<PrivacyPolicy />} />
             <Route path="cgu" element={<TermsOfService />} />
