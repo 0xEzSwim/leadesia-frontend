@@ -7,6 +7,7 @@ export const ASSETS = {
 export const NAVIGATION = [
   { name: 'Expertise', href: '#expertise' },
   { name: 'Résultats', href: '#resultats' },
+  { name: 'Études de cas', href: '#etudes-de-cas' },
   { name: 'Processus', href: '#processus' },
   { name: 'Simulateur', href: '#simulateur' },
 ];

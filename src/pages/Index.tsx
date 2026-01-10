@@ -6,6 +6,7 @@ import Services from '../components/shared/Services';
 import Process from '../components/shared/Process';
 import GrowthSimulator from '../components/shared/GrowthSimulator';
 import Results from '../components/shared/Results';
+import CaseStudies from '../components/shared/CaseStudies';
 import { LayoutContextType } from '../components/layout/Layout';
 
 const Index: React.FC = () => {
@@ -37,6 +38,7 @@ const Index: React.FC = () => {
       <ProblemSolution />
       <Services />
       <Results />
+      <CaseStudies onContactClick={openContact} />
       <Process />
       <GrowthSimulator onContactClick={openContact} />
     </>
