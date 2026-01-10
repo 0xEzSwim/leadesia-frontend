@@ -32,7 +32,7 @@ const CustomTooltip = ({ active, payload, label, view }: any) => {
         )}
         {gain > 0 && (
            <div className="mt-2 pt-2 border-t border-gray-100 font-semibold" style={{ color: leadesiaData.stroke || leadesiaData.fill }}>
-            Gain : +{view === 'ca' ? formatCurrency(gain) : `${formatNumber(gain)}`}
+            Gain publicitaire : +{view === 'ca' ? formatCurrency(gain) : `${formatNumber(gain)}`}
           </div>
         )}
       </div>
@@ -135,7 +135,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
               <div>
                 <label htmlFor="budgetIncrease" className="block text-sm font-medium text-gray-700">Augmentation budget pub / mois</label>
                 <div className="flex items-center gap-4 mt-2">
-                  <input id="budgetIncrease" type="range" min="0" max="10" step="1" value={budgetIncrease} onChange={(e) => setBudgetIncrease(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+                  <input id="budgetIncrease" type="range" min="0" max="100" step="1" value={budgetIncrease} onChange={(e) => setBudgetIncrease(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
                   <div className="relative w-28">
                     <input type="number" value={budgetIncrease} onChange={(e) => setBudgetIncrease(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
                     <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">%</span>
@@ -166,7 +166,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
 
             <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 h-[24rem] w-full flex flex-col">
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-sm font-semibold text-gray-500 uppercase">Projection sur 6 mois</h3>
+                <h3 className="text-sm font-semibold text-gray-500 uppercase">Projection sur 6 mois*</h3>
                 <div className="bg-gray-100 p-1 rounded-sm flex text-xs font-medium">
                   <button onClick={() => setView('dossiers')} className={`px-3 py-1 rounded-sm transition-colors ${view === 'dossiers' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}>Dossiers</button>
                   <button onClick={() => setView('ca')} className={`px-3 py-1 rounded-sm transition-colors ${view === 'ca' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}>C.A.</button>
@@ -179,7 +179,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                     <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
                     <YAxis tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} tickFormatter={(value) => view === 'ca' ? `${value / 1000}k` : value} />
                     <Tooltip cursor={{ stroke: '#c5a065', strokeDasharray: '3 3' }} content={<CustomTooltip view={view} />} />
-                    <Legend wrapperStyle={{fontSize: "12px"}} verticalAlign="top" align="right" />
+                    <Legend wrapperStyle={{fontSize: "12px"}} />
                     <Line type="monotone" dataKey="current" name="Situation Actuelle" stroke="#a0aec0" strokeWidth={3} dot={{ r: 4, fill: '#a0aec0' }} activeDot={{ r: 6 }}/>
                     <Line type="monotone" dataKey="leadesia" name="Projection Leadesia" stroke="#5D181E" strokeWidth={3} dot={{ r: 4, fill: '#5D181E' }} activeDot={{ r: 6 }}/>
                   </LineChart>
