@@ -39,25 +39,22 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
   const [investment, setInvestment] = useState(1000);
   const [avgFee, setAvgFee] = useState(3500);
   const [currentCases, setCurrentCases] = useState(1);
-  const [reinvestment, setReinvestment] = useState(0);
+  const [reinvestment, setReinvestment] = useState(0); // Now a percentage
   const [view, setView] = useState<'dossiers' | 'ca'>('dossiers');
 
   const calculations = useMemo(() => {
     const { META_BUDGET_RATIO, COST_PER_LEAD, SIGNATURE_CONVERSION_RATE } = SIMULATOR_CONSTANTS;
-    const SCALE_EFFICIENCY_FACTOR = 0.95;
-
-    // KPI calculation for the first month
-    const newCasesLeadesiaMonth1 = Math.ceil((investment * META_BUDGET_RATIO / COST_PER_LEAD) * SIGNATURE_CONVERSION_RATE);
-    const additionalMonthlyRevenue = newCasesLeadesiaMonth1 * avgFee;
-    const roi = investment > 0 ? (additionalMonthlyRevenue - investment) / investment : 0;
+    
+    const results = [];
+    let reinvestedAmountFromPreviousMonth = 0;
     
     // Iterative calculation for the 6-month chart
-    const results = [];
-    let monthlyInvestment = investment;
-    let effectiveCPL = COST_PER_LEAD;
-
     for (let i = 0; i < 6; i++) {
-        const newCasesThisMonth = Math.ceil(((monthlyInvestment * META_BUDGET_RATIO) / effectiveCPL) * SIGNATURE_CONVERSION_RATE);
+        const totalMonthlyBudget = investment + reinvestedAmountFromPreviousMonth;
+        const cplTranches = Math.floor(totalMonthlyBudget / 10000);
+        const effectiveCPL = COST_PER_LEAD * Math.pow(1.2, cplTranches);
+        
+        const newCasesThisMonth = Math.ceil(((totalMonthlyBudget * META_BUDGET_RATIO) / effectiveCPL) * SIGNATURE_CONVERSION_RATE);
         const totalProjectedCases = currentCases + newCasesThisMonth;
         const projectedRevenue = totalProjectedCases * avgFee;
 
@@ -67,15 +64,16 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
             leadesia: view === 'dossiers' ? totalProjectedCases : projectedRevenue,
         });
         
-        // Prepare for next month
+        // Prepare for next month's reinvestment
         const revenueFromNewCases = newCasesThisMonth * avgFee;
-        const profit = revenueFromNewCases - monthlyInvestment;
-        const reinvestedAmount = Math.min(Math.max(0, profit), reinvestment);
-        
-        monthlyInvestment = investment + reinvestedAmount;
-        effectiveCPL = effectiveCPL / SCALE_EFFICIENCY_FACTOR;
+        reinvestedAmountFromPreviousMonth = revenueFromNewCases * (reinvestment / 100);
     }
 
+    // KPIs are for the first month (no reinvestment yet)
+    const newCasesLeadesiaMonth1 = Math.ceil((investment * META_BUDGET_RATIO / COST_PER_LEAD) * SIGNATURE_CONVERSION_RATE);
+    const additionalMonthlyRevenue = newCasesLeadesiaMonth1 * avgFee;
+    const roi = investment > 0 ? (additionalMonthlyRevenue - investment) / investment : 0;
+    
     return { newCasesLeadesia: newCasesLeadesiaMonth1, additionalMonthlyRevenue, roi, chartData: results };
   }, [investment, avgFee, currentCases, reinvestment, view]);
 
@@ -127,10 +125,10 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                <div>
                 <label htmlFor="reinvestment" className="block text-sm font-medium text-gray-700">Réinvestissement des profits / mois</label>
                 <div className="flex items-center gap-4 mt-2">
-                  <input id="reinvestment" type="range" min="0" max="5000" step="100" value={reinvestment} onChange={(e) => setReinvestment(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+                  <input id="reinvestment" type="range" min="0" max="100" step="5" value={reinvestment} onChange={(e) => setReinvestment(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
                   <div className="relative w-28">
                     <input type="number" value={reinvestment} onChange={(e) => setReinvestment(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
-                    <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">€</span>
+                    <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">%</span>
                   </div>
                 </div>
               </div>
@@ -187,7 +185,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
         </div>
         <div className="text-center mt-12">
             <p className="text-xs text-gray-500 italic max-w-3xl mx-auto">
-                *Hypothèses de calcul : Les projections sont basées sur nos données de performance moyennes (CPL initial de 300€, taux de signature de 50%). Une augmentation du CPL de ~5% par mois est simulée pour refléter les coûts de scaling sur Meta. Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
+                *Hypothèses de calcul : CPL initial de {SIMULATOR_CONSTANTS.COST_PER_LEAD}€, taux de signature de {SIMULATOR_CONSTANTS.SIGNATURE_CONVERSION_RATE * 100}%. Le CPL augmente de 20% pour chaque tranche de 10 000€ d'investissement mensuel total (budget initial + réinvestissement). Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
             </p>
         </div>
       </div>

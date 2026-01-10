@@ -37,8 +37,8 @@ const Index: React.FC = () => {
       <ProblemSolution />
       <Services />
       <Results />
-      <GrowthSimulator onContactClick={openContact} />
       <Process />
+      <GrowthSimulator onContactClick={openContact} />
     </>
   );
 };
