@@ -15,6 +15,7 @@ const CustomTooltip = ({ active, payload, label, view }: any) => {
   if (active && payload && payload.length) {
     const currentData = payload.find((p: any) => p.dataKey === 'current');
     const leadesiaData = payload.find((p: any) => p.dataKey === 'leadesia');
+    const gain = leadesiaData.value - currentData.value;
     
     return (
       <div className="bg-white p-4 rounded-sm shadow-lg border border-gray-200 text-sm">
@@ -29,6 +30,11 @@ const CustomTooltip = ({ active, payload, label, view }: any) => {
             Projection Leadesia: <strong>{view === 'ca' ? formatCurrency(leadesiaData.value) : `${formatNumber(leadesiaData.value)}`}</strong>
           </div>
         )}
+        {gain > 0 && (
+           <div className="mt-2 pt-2 border-t border-gray-100 font-semibold" style={{ color: leadesiaData.stroke || leadesiaData.fill }}>
+            Gain : +{view === 'ca' ? formatCurrency(gain) : `${formatNumber(gain)}`}
+          </div>
+        )}
       </div>
     );
   }
@@ -39,22 +45,31 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
   const [investment, setInvestment] = useState(1000);
   const [avgFee, setAvgFee] = useState(3500);
   const [currentCases, setCurrentCases] = useState(1);
-  const [reinvestment, setReinvestment] = useState(0); // Now a percentage
+  const [budgetIncrease, setBudgetIncrease] = useState(0); // Percentage
   const [view, setView] = useState<'dossiers' | 'ca'>('dossiers');
 
   const calculations = useMemo(() => {
     const { META_BUDGET_RATIO, COST_PER_LEAD, SIGNATURE_CONVERSION_RATE } = SIMULATOR_CONSTANTS;
     
     const results = [];
-    let reinvestedAmountFromPreviousMonth = 0;
+    let totalNewCases = 0;
+    let totalAdditionalRevenue = 0;
+    let totalInvestment = 0;
     
     // Iterative calculation for the 6-month chart
     for (let i = 0; i < 6; i++) {
-        const totalMonthlyBudget = investment + reinvestedAmountFromPreviousMonth;
-        const cplTranches = Math.floor(totalMonthlyBudget / 10000);
+        const monthlyBudget = investment * Math.pow(1 + budgetIncrease / 100, i);
+        totalInvestment += monthlyBudget;
+
+        const cplTranches = Math.floor(monthlyBudget / 10000);
         const effectiveCPL = COST_PER_LEAD * Math.pow(1.2, cplTranches);
         
-        const newCasesThisMonth = Math.ceil(((totalMonthlyBudget * META_BUDGET_RATIO) / effectiveCPL) * SIGNATURE_CONVERSION_RATE);
+        const newCasesThisMonth = Math.ceil(((monthlyBudget * META_BUDGET_RATIO) / effectiveCPL) * SIGNATURE_CONVERSION_RATE);
+        totalNewCases += newCasesThisMonth;
+
+        const additionalRevenueThisMonth = newCasesThisMonth * avgFee;
+        totalAdditionalRevenue += additionalRevenueThisMonth;
+        
         const totalProjectedCases = currentCases + newCasesThisMonth;
         const projectedRevenue = totalProjectedCases * avgFee;
 
@@ -63,19 +78,14 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
             current: view === 'dossiers' ? currentCases : (currentCases * avgFee),
             leadesia: view === 'dossiers' ? totalProjectedCases : projectedRevenue,
         });
-        
-        // Prepare for next month's reinvestment
-        const revenueFromNewCases = newCasesThisMonth * avgFee;
-        reinvestedAmountFromPreviousMonth = revenueFromNewCases * (reinvestment / 100);
     }
 
-    // KPIs are for the first month (no reinvestment yet)
-    const newCasesLeadesiaMonth1 = Math.ceil((investment * META_BUDGET_RATIO / COST_PER_LEAD) * SIGNATURE_CONVERSION_RATE);
-    const additionalMonthlyRevenue = newCasesLeadesiaMonth1 * avgFee;
-    const roi = investment > 0 ? (additionalMonthlyRevenue - investment) / investment : 0;
+    const avgNewCases = totalNewCases / 6;
+    const avgAdditionalRevenue = totalAdditionalRevenue / 6;
+    const totalRoi = totalInvestment > 0 ? (totalAdditionalRevenue - totalInvestment) / totalInvestment : 0;
     
-    return { newCasesLeadesia: newCasesLeadesiaMonth1, additionalMonthlyRevenue, roi, chartData: results };
-  }, [investment, avgFee, currentCases, reinvestment, view]);
+    return { avgNewCases, avgAdditionalRevenue, totalRoi, chartData: results };
+  }, [investment, avgFee, currentCases, budgetIncrease, view]);
 
   return (
     <section id="simulateur" className={`py-24 scroll-mt-24 ${isPage ? '' : 'bg-white'}`}>
@@ -97,7 +107,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
             <h4 className="font-bold text-xl text-brand-black mb-6">Vos paramètres</h4>
             <div className="space-y-8">
               <div>
-                <label htmlFor="investment" className="block text-sm font-medium text-gray-700">Investissement mensuel</label>
+                <label htmlFor="investment" className="block text-sm font-medium text-gray-700">Investissement mensuel initial</label>
                 <div className="flex items-center gap-4 mt-2">
                   <input id="investment" type="range" min="500" max="5000" step="100" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
                   <div className="relative w-28">
@@ -123,11 +133,11 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                 </div>
               </div>
                <div>
-                <label htmlFor="reinvestment" className="block text-sm font-medium text-gray-700">Réinvestissement des profits / mois</label>
+                <label htmlFor="budgetIncrease" className="block text-sm font-medium text-gray-700">Augmentation budget pub / mois</label>
                 <div className="flex items-center gap-4 mt-2">
-                  <input id="reinvestment" type="range" min="0" max="100" step="5" value={reinvestment} onChange={(e) => setReinvestment(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+                  <input id="budgetIncrease" type="range" min="0" max="10" step="1" value={budgetIncrease} onChange={(e) => setBudgetIncrease(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
                   <div className="relative w-28">
-                    <input type="number" value={reinvestment} onChange={(e) => setReinvestment(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
+                    <input type="number" value={budgetIncrease} onChange={(e) => setBudgetIncrease(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
                     <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">%</span>
                   </div>
                 </div>
@@ -139,18 +149,18 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
             <div className="grid sm:grid-cols-3 gap-4 mb-4">
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <Briefcase className="mx-auto text-brand-gold mb-2" />
-                  <span className="block text-2xl font-bold text-brand-burgundy">+{formatNumber(calculations.newCasesLeadesia)}</span>
-                  <span className="text-xs text-gray-500 font-medium uppercase">Nouveaux dossiers (Mois 1)</span>
+                  <span className="block text-2xl font-bold text-brand-burgundy">+{formatNumber(calculations.avgNewCases)}</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase">Nouveaux dossiers / mois</span>
                </div>
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <Euro className="mx-auto text-brand-gold mb-2" />
-                  <span className="block text-2xl font-bold text-brand-burgundy">+{formatCurrency(calculations.additionalMonthlyRevenue)}</span>
-                  <span className="text-xs text-gray-500 font-medium uppercase">C.A. additionnel (Mois 1)</span>
+                  <span className="block text-2xl font-bold text-brand-burgundy">+{formatCurrency(calculations.avgAdditionalRevenue)}</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase">C.A. additionnel / mois</span>
                </div>
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <TrendingUp className="mx-auto text-brand-gold mb-2" />
-                  <span className="block text-2xl font-bold text-brand-burgundy">x{Math.max(0, calculations.roi + 1).toFixed(1)}</span>
-                  <span className="text-xs text-gray-500 font-medium uppercase">Retour sur Invest. (Mois 1)</span>
+                  <span className="block text-2xl font-bold text-brand-burgundy">x{Math.max(0, calculations.totalRoi + 1).toFixed(1)}</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase">Retour sur Invest. (6 mois)</span>
                </div>
             </div>
 
@@ -185,7 +195,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
         </div>
         <div className="text-center mt-12">
             <p className="text-xs text-gray-500 italic max-w-3xl mx-auto">
-                *Hypothèses de calcul : CPL initial de {SIMULATOR_CONSTANTS.COST_PER_LEAD}€, taux de signature de {SIMULATOR_CONSTANTS.SIGNATURE_CONVERSION_RATE * 100}%. Le CPL augmente de 20% pour chaque tranche de 10 000€ d'investissement mensuel total (budget initial + réinvestissement). Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
+                *Hypothèses de calcul : CPL initial de {SIMULATOR_CONSTANTS.COST_PER_LEAD}€, taux de signature de {SIMULATOR_CONSTANTS.SIGNATURE_CONVERSION_RATE * 100}%. Le CPL augmente de 20% pour chaque tranche de 10 000€ d'investissement mensuel total. Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
             </p>
         </div>
       </div>
