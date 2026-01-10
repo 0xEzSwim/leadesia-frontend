@@ -12,10 +12,10 @@ const Offers: React.FC<OffersProps> = ({ onContactClick }) => {
       tagline: "POUR DÉMARRER FORT",
       profile: "Cabinet Individuel - Sérénité",
       objective: "Assurer un flux de dossiers constant et rentable dès le lancement.",
-      investment: "À partir de 1 200 € / mois",
+      investment: "À partir de 1 000 € / mois",
       results: [
-        { label: "Dossiers ciblés / mois", value: "4-6" },
-        { label: "ROI moyen constaté", value: "x4" },
+        { label: "Dossiers ciblés / mois", value: "2-3" },
+        { label: "ROI moyen constaté", value: "x5" },
         { label: "Visibilité immédiate", value: "Garanti" },
       ],
       buttonText: "Débloquer la Sérénité"
