@@ -45,7 +45,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
   const [investment, setInvestment] = useState(1000);
   const [avgFee, setAvgFee] = useState(3500);
   const [currentCases, setCurrentCases] = useState(1);
-  const [budgetIncrease, setBudgetIncrease] = useState(0); // Percentage
+  const [budgetIncrease, setBudgetIncrease] = useState(30); // Percentage
   const [view, setView] = useState<'dossiers' | 'ca'>('dossiers');
 
   const calculations = useMemo(() => {
@@ -107,13 +107,6 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
             <h4 className="font-bold text-xl text-brand-black mb-6">Vos paramètres</h4>
             <div className="space-y-8">
               <div>
-                <label htmlFor="avgFee" className="block text-sm font-medium text-gray-700">Honoraires moyens / dossier</label>
-                <div className="relative mt-2">
-                  <input id="avgFee" type="number" step="100" value={avgFee} onChange={(e) => setAvgFee(Number(e.target.value))} className="w-full px-4 py-2 rounded-sm border border-gray-300 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all" />
-                  <span className="absolute inset-y-0 right-4 flex items-center text-gray-500">€</span>
-                </div>
-              </div>
-              <div>
                 <label htmlFor="currentCases" className="block text-sm font-medium text-gray-700">Dossiers actuels / mois</label>
                 <div className="flex items-center gap-4 mt-2">
                   <input id="currentCases" type="range" min="0" max="10" step="1" value={currentCases} onChange={(e) => setCurrentCases(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
@@ -121,24 +114,31 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                     <input type="number" value={currentCases} onChange={(e) => setCurrentCases(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
                   </div>
                 </div>
-                <div>
-                  <label htmlFor="investment" className="block text-sm font-medium text-gray-700">Investissement mensuel publicitaire initial</label>
-                  <div className="flex items-center gap-4 mt-2">
-                    <input id="investment" type="range" min="1000" max="10000" step="100" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
-                    <div className="relative w-28">
-                      <input type="number" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
-                      <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">€</span>
-                    </div>
+              </div>
+              <div>
+                <label htmlFor="avgFee" className="block text-sm font-medium text-gray-700">Honoraires moyens / dossier</label>
+                <div className="relative mt-2">
+                  <input id="avgFee" type="number" step="100" value={avgFee} onChange={(e) => setAvgFee(Number(e.target.value))} className="w-full px-4 py-2 rounded-sm border border-gray-300 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all" />
+                  <span className="absolute inset-y-0 right-4 flex items-center text-gray-500">€</span>
+                </div>
+              </div>
+              <div>
+                <label htmlFor="investment" className="block text-sm font-medium text-gray-700">Investissement publicitaire mensuel</label>
+                <div className="flex items-center gap-4 mt-2">
+                  <input id="investment" type="range" min="1000" max="10000" step="100" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+                  <div className="relative w-28">
+                    <input type="number" value={investment} onChange={(e) => setInvestment(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
+                    <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">€</span>
                   </div>
                 </div>
-                <div>
-                  <label htmlFor="budgetIncrease" className="block text-sm font-medium text-gray-700">Augmentation budget pub / mois</label>
-                  <div className="flex items-center gap-4 mt-2">
-                    <input id="budgetIncrease" type="range" min="0" max="100" step="1" value={budgetIncrease} onChange={(e) => setBudgetIncrease(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
-                    <div className="relative w-28">
-                      <input type="number" value={budgetIncrease} onChange={(e) => setBudgetIncrease(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
-                      <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">%</span>
-                    </div>
+              </div>
+              <div>
+                <label htmlFor="budgetIncrease" className="block text-sm font-medium text-gray-700">Augmentation budget pub / mois</label>
+                <div className="flex items-center gap-4 mt-2">
+                  <input id="budgetIncrease" type="range" min="0" max="10" step="1" value={budgetIncrease} onChange={(e) => setBudgetIncrease(Number(e.target.value))} className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+                  <div className="relative w-28">
+                    <input type="number" value={budgetIncrease} onChange={(e) => setBudgetIncrease(Number(e.target.value))} className="w-full pl-3 pr-6 py-1 text-right rounded-sm border border-gray-300 focus:ring-1 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all text-sm"/>
+                    <span className="absolute inset-y-0 right-2 flex items-center text-gray-500 text-sm">%</span>
                   </div>
                 </div>
               </div>
@@ -150,12 +150,12 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <Briefcase className="mx-auto text-brand-gold mb-2" />
                   <span className="block text-2xl font-bold text-brand-burgundy">+{formatNumber(calculations.avgNewCases)}</span>
-                  <span className="text-xs text-gray-500 font-medium uppercase">Nouveaux dossiers / mois</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase">Nouv. dossiers moyens / mois</span>
                </div>
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <Euro className="mx-auto text-brand-gold mb-2" />
                   <span className="block text-2xl font-bold text-brand-burgundy">+{formatCurrency(calculations.avgAdditionalRevenue)}</span>
-                  <span className="text-xs text-gray-500 font-medium uppercase">C.A. additionnel / mois</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase">C.A. additionnel moyen / mois</span>
                </div>
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <TrendingUp className="mx-auto text-brand-gold mb-2" />
@@ -186,7 +186,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                 </ResponsiveContainer>
               </div>
             </div>
-            <div className="text-center mt-6">
+            <div className="mt-6 flex justify-center">
               <button onClick={onContactClick} className="w-full sm:w-auto px-8 py-4 btn-burgundy rounded-sm font-medium text-lg shadow-sm flex items-center justify-center gap-2">
                 Obtenir ces résultats ce mois-ci <ArrowRight size={20} />
               </button>
@@ -195,7 +195,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
         </div>
         <div className="text-center mt-12">
             <p className="text-xs text-gray-500 italic max-w-3xl mx-auto">
-                *Hypothèses de calcul : CPL initial de {SIMULATOR_CONSTANTS.COST_PER_LEAD}€, taux de signature de {SIMULATOR_CONSTANTS.SIGNATURE_CONVERSION_RATE * 100}%. Le CPL augmente de 20% pour chaque tranche de 10 000€ d'investissement mensuel total. Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
+                *Cette simulation est fournie à titre indicatif et ne constitue pas une garantie de résultats.
             </p>
         </div>
       </div>
