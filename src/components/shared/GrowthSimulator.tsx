@@ -44,7 +44,7 @@ const CustomTooltip = ({ active, payload, label, view }: any) => {
 const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPage = false }) => {
   const [investment, setInvestment] = useState(1000);
   const [avgFee, setAvgFee] = useState(3500);
-  const [currentCases, setCurrentCases] = useState(1);
+  const [currentCases, setCurrentCases] = useState(2);
   const [budgetIncrease, setBudgetIncrease] = useState(30); // Percentage
   const [view, setView] = useState<'dossiers' | 'ca'>('dossiers');
 
