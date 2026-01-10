@@ -80,16 +80,16 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
 
                 {/* 4 flying icon squares over image */}
                 <div className="absolute bottom-6 right-6 grid grid-cols-2 gap-3">
-                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:-translate-y-1">
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14">
                     <Facebook size={24} className="text-brand-burgundy" fill="currentColor" strokeWidth={0} />
                   </div>
-                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:-translate-y-1">
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14">
                     <Instagram size={24} className="text-brand-burgundy" />
                   </div>
-                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:-translate-y-1">
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14">
                     <CalendarCheck size={24} className="text-brand-burgundy" />
                   </div>
-                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14 transition-transform hover:-translate-y-1">
+                  <div className="bg-white/80 backdrop-blur-md p-3 rounded-sm border border-white/20 shadow-lg flex items-center justify-center w-14 h-14">
                     <PhoneCall size={24} className="text-brand-burgundy" />
                   </div>
                 </div>

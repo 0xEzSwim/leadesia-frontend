@@ -46,7 +46,7 @@ const CaseStudies: React.FC = () => {
 
             <blockquote className="mt-8 bg-brand-cream p-6 rounded-sm border-l-4 border-brand-gold text-gray-700">
               <p className="font-serif italic">
-                "Ce type de témoignage illustre le changement de paradigme : 'Je sélectionne enfin mes clients au lieu de simplement accumuler des followers.'"
+                "J’ai demandé comment on avait des clients, et personne n’était capable de me le dire. On m’a répondu : « ils arrivent, ils arrivent ». La publicité a transformé mon activité."
               </p>
             </blockquote>
           </div>
