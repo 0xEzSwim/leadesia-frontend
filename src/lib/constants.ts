@@ -7,13 +7,13 @@ export const ASSETS = {
 export const NAVIGATION = [
   { name: 'Expertise', href: '#expertise' },
   { name: 'Résultats', href: '#resultats' },
-  { name: 'Simulateur', href: '#simulateur' },
   { name: 'Processus', href: '#processus' },
+  { name: 'Simulateur', href: '#simulateur' },
 ];
 
 // Simulator Constants
 export const SIMULATOR_CONSTANTS = {
   META_BUDGET_RATIO: 0.5,
   COST_PER_LEAD: 65, // CPL Calendrier
-  SIGNATURE_CONVERSION_RATE: 0.4,
+  SIGNATURE_CONVERSION_RATE: 0.2,
 };

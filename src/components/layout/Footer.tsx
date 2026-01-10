@@ -62,8 +62,8 @@ const Footer: React.FC = () => {
               <li><a href="#" onClick={(e) => handleNavClick(e, '#')} className="hover:text-brand-gold transition-colors">Accueil</a></li>
               <li><a href="#expertise" onClick={(e) => handleNavClick(e, '#expertise')} className="hover:text-brand-gold transition-colors">Expertise</a></li>
               <li><a href="#resultats" onClick={(e) => handleNavClick(e, '#resultats')} className="hover:text-brand-gold transition-colors">Résultats</a></li>
-              <li><a href="#simulateur" onClick={(e) => handleNavClick(e, '#simulateur')} className="hover:text-brand-gold transition-colors">Simulateur</a></li>
               <li><a href="#processus" onClick={(e) => handleNavClick(e, '#processus')} className="hover:text-brand-gold transition-colors">Processus</a></li>
+              <li><a href="#simulateur" onClick={(e) => handleNavClick(e, '#simulateur')} className="hover:text-brand-gold transition-colors">Simulateur</a></li>
             </ul>
           </div>
 
