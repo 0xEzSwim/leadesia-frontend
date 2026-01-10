@@ -24,9 +24,9 @@ const Offers: React.FC<OffersProps> = ({ onContactClick }) => {
       tagline: "POUR PASSER UN CAP",
       profile: "Cabinet d'Associés - Croissance",
       objective: "Se positionner sur des dossiers à plus forte valeur et scaler l'acquisition.",
-      investment: "Investissement sur-mesure",
+      investment: "À partir de 3 000 € / mois",
       results: [
-        { label: "Dossiers premium / mois", value: "8-12+" },
+        { label: "Dossiers premium / mois", value: "6+" },
         { label: "Exclusivité sectorielle", value: "Prioritaire" },
         { label: "Reporting avancé", value: "Inclus" },
       ],

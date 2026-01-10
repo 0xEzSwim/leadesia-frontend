@@ -87,6 +87,23 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                 <span>Jusqu'à 2x plus de dossiers</span>
               </div>
             </div>
+            
+            {/* Moved and Restyled KPI Card */}
+            <div className="mt-12">
+              <div className="bg-white p-5 rounded-sm shadow-lg border border-gray-100 max-w-sm mx-auto lg:mx-0">
+                  <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-bold text-gray-400 uppercase">Croissance mensuelle moyenne</span>
+                      <span className="text-green-500 text-base font-bold">+127%</span>
+                  </div>
+                  <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-full bg-brand-burgundy w-3/4 rounded-full"></div>
+                  </div>
+                  <p className="mt-3 text-sm text-brand-black font-semibold">
+                      de dossiers signés via Leadesia constaté chez nos partenaires.
+                  </p>
+              </div>
+            </div>
+
           </div>
 
           {/* Hero Visual */}
@@ -98,21 +115,8 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                 className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black/70 to-transparent p-6 pb-12 text-white">
-                <p className="font-serif italic text-lg">"Leadesia a transformé notre cabinet en 3 mois."</p>
-                <p className="text-sm opacity-80 mt-1">Cabinet fiscaliste associé, Paris VIII</p>
+                {/* Quote removed */}
               </div>
-            </div>
-            
-            {/* Floating Card */}
-            <div className="absolute -bottom-8 -left-8 bg-white p-5 rounded-sm shadow-xl border border-gray-100 max-w-xs z-20">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-gray-400 uppercase">Croissance mensuelle</span>
-                <span className="text-green-500 text-xs font-bold">+127%</span>
-              </div>
-              <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-brand-burgundy w-3/4 rounded-full"></div>
-              </div>
-              <p className="mt-3 text-sm text-brand-black font-semibold">Dossiers signés via Leadesia</p>
             </div>
           </div>
         </div>

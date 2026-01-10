@@ -4,7 +4,7 @@ import { Droplets, Target, Euro, Briefcase, TrendingUp } from 'lucide-react';
 const CaseStudies: React.FC = () => {
 
   return (
-    <section id="etudes-de-cas" className="pt-24 bg-brand-cream scroll-mt-24">
+    <section id="etudes-de-cas" className="pt-24 pb-16 bg-brand-cream scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Étude de Cas</h2>
@@ -37,9 +37,9 @@ const CaseStudies: React.FC = () => {
               <div>
                 <h5 className="font-bold text-gray-800 mb-3 flex items-center"><Target className="w-4 h-4 mr-2 text-green-500" />La Stratégie Appliquée</h5>
                 <ul className="space-y-2 list-inside list-disc text-gray-500">
-                  <li>Retargeting de l'audience engagée</li>
-                  <li>Tunnel de qualification publicitaire</li>
-                  <li>Automatisation du filtrage</li>
+                  <li>Publicités Meta (Facebook & Insta)</li>
+                  <li>Qualification fine des prospects</li>
+                  <li>RDV pris dans votre agenda</li>
                 </ul>
               </div>
             </div>
@@ -53,11 +53,11 @@ const CaseStudies: React.FC = () => {
           <div className="order-1 lg:order-2">
             <div className="relative rounded-sm overflow-hidden aspect-square">
               <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1200&auto-format&fit=crop" 
                 alt="Avocat dans un bureau moderne"
                 className="w-full h-full object-cover" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-6 text-white w-full">
                 <p className="text-xs uppercase font-bold tracking-wider mb-2 text-brand-lightGold">Résultats dès le 1er mois</p>
                 <div className="grid grid-cols-3 gap-4 text-center">
