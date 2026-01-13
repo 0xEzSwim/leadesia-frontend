@@ -11,8 +11,9 @@ export default defineConfig(({ mode }) => ({
   plugins: [react(), mode === "development"].filter(Boolean),
   resolve: {
     alias: {
-      // Fix: `__dirname` is not available in ES modules. Use `process.cwd()` to get the project root directory.
-      "@": path.resolve(process.cwd(), "./src"),
+      // FIX: Use `__dirname` to resolve the path to the `src` directory. This is a standard
+      // practice in Node.js environments and avoids potential typing issues with `process.cwd()`.
+      "@": path.resolve(__dirname, "./src"),
     },
   },
 }));
