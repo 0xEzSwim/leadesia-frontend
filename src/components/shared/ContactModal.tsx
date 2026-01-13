@@ -95,12 +95,26 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Site web du cabinet</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Numéro de téléphone</label>
                 <input 
-                  type="url" 
-                  name="website"
+                  type="tel" 
+                  name="user_phone"
+                  required
                   className="w-full px-4 py-3 rounded-sm bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all"
-                  placeholder="www.cabinet-dupont.fr"
+                  placeholder="06 12 34 56 78"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Code postal du cabinet</label>
+                <input 
+                  type="text" 
+                  name="postal_code"
+                  required
+                  pattern="[0-9]{5}"
+                  maxLength={5}
+                  className="w-full px-4 py-3 rounded-sm bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-brand-burgundy focus:border-transparent outline-none transition-all"
+                  placeholder="75008"
                 />
               </div>
 
