@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://leadesia.com/sitemap.xml
+Sitemap: https://www.leadesia.com/sitemap.xml
