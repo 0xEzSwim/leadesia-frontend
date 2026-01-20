@@ -37,16 +37,16 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
               <div>
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-brand-burgundy/5 border border-brand-burgundy/10 text-brand-burgundy text-xs font-semibold tracking-wide uppercase mb-6">
                   <span className="w-2 h-2 rounded-full bg-brand-burgundy mr-2"></span>
-                  Réservé aux avocats fiscalistes
+                  Dédié aux avocats indépendants
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl font-serif font-bold text-brand-black leading-tight mb-6">
-                  Ne cherchez plus vos clients.<br />
-                  <span className="text-brand-burgundy">Choisissez vos dossiers.</span>
+                  Avocat indépendant : Des dossiers réguliers.<br />
+                  <span className="text-brand-burgundy">Fini l'activité en dents de scie.</span>
                 </h1>
                 
                 <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  Leadesia est la première agence d'acquisition dédiée exclusivement au <strong>contentieux fiscal</strong>. Nous vous apportons des dossiers qualifiés (entreprises et particuliers) directement dans votre agenda.
+                  Leadesia est l'agence d'acquisition partenaire des <strong>avocats indépendants</strong>. Nous remplissons votre agenda de clients qualifiés pour que vous puissiez vous concentrer sur votre cœur de métier : le droit.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
