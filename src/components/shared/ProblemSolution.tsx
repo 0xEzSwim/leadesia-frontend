@@ -8,7 +8,7 @@ const ProblemSolution: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">La réalité pour un cabinet individuel</h2>
           <p className="text-gray-600">
-            L'expertise technique ne suffit plus. Dans un marché concurrentiel, les meilleurs dossiers ne vont pas forcément aux experts les plus pointus, mais aux <strong>cabinets individuels</strong> les plus visibles.
+            L'expertise technique ne suffit plus. Dans un marché concurrentiel, les meilleurs dossiers ne vont pas forcément aux experts les plus pointus, mais aux <strong>avocats les plus visibles</strong>.
           </p>
         </div>
 

@@ -22,7 +22,7 @@ const CaseStudies: React.FC = () => {
             <h4 className="font-serif font-bold text-2xl text-brand-black mb-2">Le Cas du "Confrère 2.0"</h4>
             <p className="font-medium text-brand-burgundy mb-6">De la Notoriété Digitale aux Dossiers Qualifiés</p>
             <p className="text-sm text-gray-600 mb-6 italic">
-              L'un des cas les plus emblématiques du marché est celui d'un <strong>avocat à son compte</strong> très suivi sur les réseaux sociaux. Son défi n'était pas d'être vu, mais d'être vu par les bonnes personnes pour convertir sa notoriété en dossiers à forte valeur ajoutée.
+              L'un des cas les plus emblématiques du marché est celui d'un <strong>avocat fiscaliste à son compte</strong> très suivi sur les réseaux sociaux. Son défi n'était pas d'être vu, mais d'être vu par les bonnes personnes pour convertir sa notoriété en dossiers à forte valeur ajoutée.
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 text-sm">
@@ -39,7 +39,7 @@ const CaseStudies: React.FC = () => {
                 <ul className="space-y-2 list-inside list-disc text-gray-500">
                   <li>Publicités Meta (Facebook & Insta)</li>
                   <li>Qualification fine des prospects</li>
-                  <li>RDV pris dans votre agenda</li>
+                  <li className="font-semibold">Résultat : 15 RDV pris dans son agenda</li>
                 </ul>
               </div>
             </div>

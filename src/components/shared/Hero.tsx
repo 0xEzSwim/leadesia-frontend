@@ -46,7 +46,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                 </h1>
                 
                 <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  Leadesia est l'agence d'acquisition partenaire des <strong>avocats à leur compte</strong>. Nous remplissons votre agenda de clients qualifiés pour que vous puissiez vous concentrer sur votre cœur de métier : le droit.
+                  Leadesia est l'agence d'acquisition partenaire des <strong>avocats à leur compte</strong>. Nous remplissons votre agenda de dossiers qualifiés pour que vous puissiez vous concentrer sur votre cœur de métier : le droit.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
