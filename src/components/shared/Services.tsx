@@ -8,10 +8,10 @@ const Services: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Notre Valeur Ajoutée</h2>
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
+          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Notre Valeur Ajoutée</div>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
             Une double compétence pour un seul objectif : <span className="text-brand-burgundy">Votre Rentabilité</span>
-          </h3>
+          </h2>
           <p className="text-lg text-gray-600">
             Nous maîtrisons les algorithmes pour attirer, et la psychologie humaine pour convaincre.
           </p>

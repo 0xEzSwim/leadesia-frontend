@@ -28,9 +28,10 @@ const Process: React.FC = () => {
   return (
     <section id="processus" className="py-20 bg-brand-burgundy text-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Comment ça marche ?</h2>
-          <p className="text-brand-cream/80 max-w-2xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-sm font-bold text-brand-gold uppercase tracking-widest mb-2">Notre Méthode</div>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">Comment ça marche ?</h2>
+          <p className="text-lg text-brand-cream/80 max-w-2xl mx-auto">
             Un processus rodé pour transformer des inconnus en clients fidèles, grâce à la puissance du ciblage publicitaire.
           </p>
         </div>

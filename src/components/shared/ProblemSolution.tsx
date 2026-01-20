@@ -1,14 +1,15 @@
 import React from 'react';
-import { Scale, Clock, TrendingDown, ShieldCheck } from 'lucide-react';
+import { TrendingDown, ShieldCheck } from 'lucide-react';
 
 const ProblemSolution: React.FC = () => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">La réalité pour un cabinet individuel</h2>
-          <p className="text-gray-600">
-            L'expertise technique ne suffit plus. Dans un marché concurrentiel, les meilleurs dossiers ne vont pas forcément aux experts les plus pointus, mais aux <strong>avocats les plus visibles</strong>.
+          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Le Constat</div>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">La réalité pour un cabinet individuel</h2>
+          <p className="text-lg text-gray-600">
+            L'expertise technique ne suffit plus. Dans un marché concurrentiel, les meilleurs dossiers ne vont pas forcément aux experts les plus pointus, mais aux <strong>cabinets individuels</strong> les plus visibles.
           </p>
         </div>
 

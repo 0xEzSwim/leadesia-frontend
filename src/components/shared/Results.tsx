@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { BookSearch } from 'lucide-react';
 
 // Panier moyen variable par canal d'acquisition
 const PANIER_MOYEN = {
@@ -59,6 +58,7 @@ const Results: React.FC = () => {
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           
           <div className="mb-12 lg:mb-0">
+            <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Performance</div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-black mb-6">
               Des résultats concrets, une croissance prévisible
             </h2>
