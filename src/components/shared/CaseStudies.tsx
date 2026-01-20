@@ -7,12 +7,12 @@ const CaseStudies: React.FC = () => {
     <section id="etudes-de-cas" className="pt-24 pb-16 bg-brand-cream scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Étude de Cas</div>
+          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Retour d'Expérience</div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-            Des stratégies concrètes, des résultats démontrés
+            Il avait la notoriété. Il lui manquait les dossiers.
           </h2>
           <p className="text-lg text-gray-600">
-            Analyse d'un cas public illustrant la différence entre visibilité et rentabilité, et comment la publicité ciblée change la donne.
+            Comment un confrère est passé de la simple visibilité sur les réseaux sociaux à des mandats signés grâce à notre système de qualification.
           </p>
         </div>
 
@@ -63,7 +63,7 @@ const CaseStudies: React.FC = () => {
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
                     <span className="text-2xl font-bold font-serif">+30k€</span>
-                    <span className="block text-xs opacity-80">C.A. généré</span>
+                    <span className="block text-xs opacity-80">Honoraires générés</span>
                   </div>
                   <div>
                     <span className="text-2xl font-bold font-serif">6</span>

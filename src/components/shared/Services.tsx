@@ -8,12 +8,12 @@ const Services: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Notre Valeur Ajoutée</div>
+          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Notre Savoir-Faire</div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-            Une double compétence pour un seul objectif : <span className="text-brand-burgundy">Votre Rentabilité</span>
+            La puissance du ciblage digital. <span className="text-brand-burgundy">La rigueur du filtrage humain.</span>
           </h2>
           <p className="text-lg text-gray-600">
-            Nous maîtrisons les algorithmes pour attirer, et la psychologie humaine pour convaincre.
+            Nous utilisons les réseaux sociaux pour identifier les justiciables, et nos équipes les appellent pour vérifier le sérieux de la demande. Vous ne recevez que des dossiers qualifiés.
           </p>
         </div>
 
@@ -28,12 +28,12 @@ const Services: React.FC = () => {
               <div className="w-14 h-14 bg-brand-burgundy/10 rounded-full flex items-center justify-center mr-5 text-brand-burgundy shadow-sm">
                 <Zap size={28} strokeWidth={2} />
               </div>
-              <h4 className="text-2xl font-serif font-bold text-gray-900">L'Expertise Publicitaire <br/><span className="text-sm font-sans font-normal text-gray-500 uppercase tracking-wide">Le Moteur</span></h4>
+              <h4 className="text-2xl font-serif font-bold text-gray-900">L'Acquisition Digitale <br/><span className="text-sm font-sans font-normal text-gray-500 uppercase tracking-wide">Le Moteur</span></h4>
             </div>
 
             <div className="flex-grow space-y-8 relative z-10">
               <p className="text-gray-600 italic border-l-2 border-brand-gold pl-4 text-lg">
-                "On ne vous apporte pas juste du clic, on capture l'attention de justiciables qui ont un problème <strong>maintenant</strong>."
+                "Nous capturons l'attention de justiciables qui ont un problème juridique <strong>maintenant</strong>, au moment précis où ils cherchent une solution."
               </p>
               
               <ul className="space-y-5">
@@ -41,21 +41,21 @@ const Services: React.FC = () => {
                   <CheckCircle2 className="w-6 h-6 text-brand-gold mr-3 mt-0.5 flex-shrink-0" />
                   <div>
                     <strong className="block text-gray-900 text-sm font-bold mb-1">Copywriting Juridique</strong>
-                    <p className="text-gray-600 text-sm leading-relaxed">Rédaction de messages éthiques mais persuasifs qui résonnent avec la douleur immédiate de vos prospects.</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">Rédaction de messages éthiques mais persuasifs qui résonnent avec la problématique de vos futurs clients.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle2 className="w-6 h-6 text-brand-gold mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <strong className="block text-gray-900 text-sm font-bold mb-1">Visuels "Scroll-Stopper"</strong>
+                    <strong className="block text-gray-900 text-sm font-bold mb-1">Visuels Impactants</strong>
                     <p className="text-gray-600 text-sm leading-relaxed">Créations graphiques conçues spécifiquement pour arrêter le défilement sur mobile.</p>
                   </div>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle2 className="w-6 h-6 text-brand-gold mr-3 mt-0.5 flex-shrink-0" />
                   <div>
-                    <strong className="block text-gray-900 text-sm font-bold mb-1">Gestion Technique Meta Ads</strong>
-                    <p className="text-gray-600 text-sm leading-relaxed">Optimisation quotidienne des enchères publicitaires pour réduire votre coût d'acquisition.</p>
+                    <strong className="block text-gray-900 text-sm font-bold mb-1">Gestion Publicitaire Meta</strong>
+                    <p className="text-gray-600 text-sm leading-relaxed">Optimisation quotidienne des campagnes pour réduire votre coût d'acquisition.</p>
                   </div>
                 </li>
               </ul>
@@ -76,7 +76,7 @@ const Services: React.FC = () => {
 
             <div className="flex-grow space-y-8 relative z-10">
               <p className="text-gray-600 italic border-l-2 border-brand-burgundy pl-4 text-lg">
-                "Vous ne perdez plus une minute. Chaque RDV posé dans votre agenda est une opportunité réelle de signature."
+                "Vous ne perdez plus une minute. Chaque RDV posé dans votre agenda est une opportunité réelle de signature de convention."
               </p>
               
               <ul className="space-y-5">
@@ -91,7 +91,7 @@ const Services: React.FC = () => {
                   <CheckCircle2 className="w-6 h-6 text-brand-burgundy mr-3 mt-0.5 flex-shrink-0" />
                   <div>
                     <strong className="block text-gray-900 text-sm font-bold mb-1">Identification du Décideur</strong>
-                    <p className="text-gray-600 text-sm leading-relaxed">Nous écartons les intermédiaires pour vous mettre directement face au signataire de la convention.</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">Nous écartons les intermédiaires pour vous mettre directement face au signataire.</p>
                   </div>
                 </li>
                 <li className="flex items-start">

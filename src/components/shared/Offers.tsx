@@ -40,10 +40,10 @@ const Offers: React.FC<OffersProps> = ({ onContactClick }) => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Nos Offres</div>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">Investissez dans votre croissance</h2>
+          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Collaboration</div>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">Un investissement adapté à la maturité de votre cabinet</h2>
           <p className="text-lg text-gray-600">
-            Des solutions adaptées aux ambitions de chaque cabinet.
+            Que vous souhaitiez sécuriser votre installation ou accélérer le développement de votre clientèle, nous avons le dispositif adapté.
           </p>
         </div>
 

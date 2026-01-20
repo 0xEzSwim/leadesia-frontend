@@ -6,10 +6,10 @@ const ProblemSolution: React.FC = () => {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Le Constat</div>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">La réalité pour un cabinet individuel</h2>
+          <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">La réalité du cabinet individuel</div>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">L'excellence juridique ne suffit plus pour remplir votre agenda.</h2>
           <p className="text-lg text-gray-600">
-            L'expertise technique ne suffit plus. Dans un marché concurrentiel, les meilleurs dossiers ne vont pas forcément aux experts les plus pointus, mais aux <strong>cabinets individuels</strong> les plus visibles.
+            Dans un barreau saturé, les dossiers ne vont pas nécessairement aux meilleurs techniciens, mais aux cabinets les plus visibles. Cessez de dépendre de l'aléatoire du bouche-à-oreille pour assurer vos charges.
           </p>
         </div>
 
@@ -28,7 +28,7 @@ const ProblemSolution: React.FC = () => {
               </li>
               <li className="flex items-start">
                 <span className="text-red-400 mr-3 text-lg">•</span>
-                <p className="text-gray-600 text-sm">Perte de temps avec des prospects insolvables ou hors-sujet.</p>
+                <p className="text-gray-600 text-sm">Perte de temps avec des appels insolvables ou hors-sujet.</p>
               </li>
               <li className="flex items-start">
                 <span className="text-red-400 mr-3 text-lg">•</span>
@@ -36,7 +36,7 @@ const ProblemSolution: React.FC = () => {
               </li>
               <li className="flex items-start">
                 <span className="text-red-400 mr-3 text-lg">•</span>
-                <p className="text-gray-600 text-sm">Revenus en dents de scie générant du stress.</p>
+                <p className="text-gray-600 text-sm">Honoraires en dents de scie générant du stress.</p>
               </li>
             </ul>
           </div>

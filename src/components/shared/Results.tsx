@@ -17,8 +17,8 @@ const dataDossiers = [
   { name: 'Mois 6', leadesia: 6, reseautage: 0, boucheAOreille: 1 },
 ];
 
-// Calcul du CA en fonction des paniers moyens respectifs
-const dataCA = dataDossiers.map(month => ({
+// Calcul des Honoraires en fonction des paniers moyens respectifs
+const dataHonoraires = dataDossiers.map(month => ({
     name: month.name,
     leadesia: month.leadesia * PANIER_MOYEN.leadesia,
     reseautage: month.reseautage * PANIER_MOYEN.reseautage,
@@ -35,7 +35,7 @@ const CustomTooltip = ({ active, payload, label, view }: any) => {
           <div key={index} style={{ color: pld.fill }}>
             {`${pld.name}: `}
             <strong>
-              {view === 'ca'
+              {view === 'honoraires'
                 ? `${pld.value.toLocaleString('fr-FR')} €`
                 : `${pld.value} ${pld.value > 1 ? 'dossiers' : 'dossier'}`}
             </strong>
@@ -49,8 +49,8 @@ const CustomTooltip = ({ active, payload, label, view }: any) => {
 
 
 const Results: React.FC = () => {
-  const [view, setView] = useState('dossiers'); // 'dossiers' or 'ca'
-  const chartData = view === 'dossiers' ? dataDossiers : dataCA;
+  const [view, setView] = useState('dossiers'); // 'dossiers' or 'honoraires'
+  const chartData = view === 'dossiers' ? dataDossiers : dataHonoraires;
 
   return (
     <section id="resultats" className="py-24 bg-white scroll-mt-24">
@@ -58,12 +58,12 @@ const Results: React.FC = () => {
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           
           <div className="mb-12 lg:mb-0">
-            <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Performance</div>
+            <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Développement du cabinet</div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-black mb-6">
-              Des résultats concrets, une croissance prévisible
+              Transformez votre visibilité en dossiers signés.
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
-              La publicité ciblée est le seul levier offrant un volume de dossiers prévisible et scalable. Fini l'incertitude du mois suivant, place à une croissance maîtrisée.
+              La publicité en ligne est le seul levier offrant un volume de dossiers prévisible. Fini les "mois creux", place à une activité lissée sur l'année.
             </p>
             
             <div className="grid grid-cols-2 gap-6 mb-8">
@@ -101,10 +101,10 @@ const Results: React.FC = () => {
                     Dossiers
                   </button>
                   <button 
-                    onClick={() => setView('ca')}
-                    className={`px-3 py-1 rounded-sm transition-colors ${view === 'ca' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}
+                    onClick={() => setView('honoraires')}
+                    className={`px-3 py-1 rounded-sm transition-colors ${view === 'honoraires' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}
                   >
-                    C.A.
+                    Honoraires
                   </button>
                 </div>
               </div>
@@ -118,7 +118,7 @@ const Results: React.FC = () => {
                       tick={{ fontSize: 12, fill: '#666' }} 
                       axisLine={false} 
                       tickLine={false}
-                      tickFormatter={(value) => view === 'ca' ? `${value / 1000}k` : value}
+                      tickFormatter={(value) => view === 'honoraires' ? `${value / 1000}k` : value}
                     />
                     <Tooltip 
                       cursor={{ fill: '#f8f5f0' }}

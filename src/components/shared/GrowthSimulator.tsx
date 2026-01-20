@@ -22,17 +22,17 @@ const CustomTooltip = ({ active, payload, label, view }: any) => {
         <p className="font-bold text-gray-800 mb-2">{label}</p>
         {currentData && (
           <div style={{ color: currentData.stroke || currentData.fill }}>
-            Situation actuelle: <strong>{view === 'ca' ? formatCurrency(currentData.value) : `${formatNumber(currentData.value)}`}</strong>
+            Situation actuelle: <strong>{view === 'honoraires' ? formatCurrency(currentData.value) : `${formatNumber(currentData.value)}`}</strong>
           </div>
         )}
         {leadesiaData && (
           <div style={{ color: leadesiaData.stroke || leadesiaData.fill }}>
-            Projection Leadesia: <strong>{view === 'ca' ? formatCurrency(leadesiaData.value) : `${formatNumber(leadesiaData.value)}`}</strong>
+            Projection Leadesia: <strong>{view === 'honoraires' ? formatCurrency(leadesiaData.value) : `${formatNumber(leadesiaData.value)}`}</strong>
           </div>
         )}
         {gain > 0 && (
            <div className="mt-2 pt-2 border-t border-gray-100 font-semibold" style={{ color: leadesiaData.stroke || leadesiaData.fill }}>
-            Gain publicitaire : +{view === 'ca' ? formatCurrency(gain) : `${formatNumber(gain)}`}
+            Gain : +{view === 'honoraires' ? formatCurrency(gain) : `${formatNumber(gain)}`}
           </div>
         )}
       </div>
@@ -46,7 +46,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
   const [avgFee, setAvgFee] = useState(3500);
   const [currentCases, setCurrentCases] = useState(2);
   const [budgetIncrease, setBudgetIncrease] = useState(30); // Percentage
-  const [view, setView] = useState<'dossiers' | 'ca'>('dossiers');
+  const [view, setView] = useState<'dossiers' | 'honoraires'>('dossiers');
 
   const calculations = useMemo(() => {
     const { META_BUDGET_RATIO, COST_PER_LEAD, SIGNATURE_CONVERSION_RATE } = SIMULATOR_CONSTANTS;
@@ -92,12 +92,12 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {!isPage && (
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Simulateur</div>
+            <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Projection d'Activité</div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-              Projetez la croissance de votre cabinet
+              Anticipez le volume de vos futurs dossiers
             </h2>
             <p className="text-lg text-gray-600 mt-4">
-              Ajustez les paramètres pour visualiser en temps réel l'impact de notre service sur votre volume de dossiers et votre chiffre d'affaires.
+              Ajustez les paramètres pour estimer l'impact de notre accompagnement sur le montant de vos honoraires annuels.
             </p>
           </div>
         )}
@@ -155,7 +155,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <Euro className="mx-auto text-brand-gold mb-2" />
                   <span className="block text-2xl font-bold text-brand-burgundy">+{formatCurrency(calculations.avgAdditionalRevenue)}</span>
-                  <span className="text-xs text-gray-500 font-medium uppercase">C.A. additionnel moyen / mois</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase">Honoraires additionnels / mois</span>
                </div>
                <div className="bg-white p-4 rounded-sm border border-gray-100 shadow-sm text-center">
                   <TrendingUp className="mx-auto text-brand-gold mb-2" />
@@ -169,7 +169,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                 <h3 className="text-sm font-semibold text-gray-500 uppercase">Projection sur 6 mois</h3>
                 <div className="bg-gray-100 p-1 rounded-sm flex text-xs font-medium">
                   <button onClick={() => setView('dossiers')} className={`px-3 py-1 rounded-sm transition-colors ${view === 'dossiers' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}>Dossiers</button>
-                  <button onClick={() => setView('ca')} className={`px-3 py-1 rounded-sm transition-colors ${view === 'ca' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}>C.A.</button>
+                  <button onClick={() => setView('honoraires')} className={`px-3 py-1 rounded-sm transition-colors ${view === 'honoraires' ? 'bg-white shadow-sm text-brand-burgundy' : 'text-gray-500'}`}>Honoraires</button>
                 </div>
               </div>
               <div className="flex-grow">
@@ -177,7 +177,7 @@ const GrowthSimulator: React.FC<GrowthSimulatorProps> = ({ onContactClick, isPag
                   <LineChart data={calculations.chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
                     <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} tickFormatter={(value) => view === 'ca' ? `${value / 1000}k` : value} />
+                    <YAxis tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} tickFormatter={(value) => view === 'honoraires' ? `${value / 1000}k` : value} />
                     <Tooltip cursor={{ stroke: '#c5a065', strokeDasharray: '3 3' }} content={<CustomTooltip view={view} />} />
                     <Legend wrapperStyle={{fontSize: "12px"}} />
                     <Line type="monotone" dataKey="current" name="Situation Actuelle" stroke="#a0aec0" strokeWidth={3} dot={{ r: 4, fill: '#a0aec0' }} activeDot={{ r: 6 }}/>
