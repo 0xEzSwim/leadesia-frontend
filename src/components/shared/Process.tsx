@@ -30,9 +30,9 @@ const Process: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-sm font-bold text-brand-gold uppercase tracking-widest mb-2">Votre Parcours d'Acquisition</div>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">Nous qualifions, vous plaidez.</h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">Nous apportons les dossiers, vous plaidez.</h2>
           <p className="text-lg text-brand-cream/80 max-w-2xl mx-auto">
-             Nous gérons la technique et le premier contact téléphonique. Votre temps est préservé pour l'essentiel : le rendez-vous client et le traitement du dossier.
+             Notre équipe gère la publicité et le premier contact téléphonique. Votre temps est préservé pour l'essentiel : le rendez-vous client et le traitement du dossier.
           </p>
         </div>
 

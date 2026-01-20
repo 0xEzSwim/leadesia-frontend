@@ -12,7 +12,7 @@ const CaseStudies: React.FC = () => {
             Il avait la notoriété. Il lui manquait les dossiers.
           </h2>
           <p className="text-lg text-gray-600">
-            Comment un confrère est passé de la simple visibilité sur les réseaux sociaux à des mandats signés grâce à notre système de qualification.
+            Comment un confrère est passé de la simple visibilité sur les réseaux sociaux à l’obtention de dossiers grâce au système de publicité digitale et de qualification humaine.
           </p>
         </div>
 

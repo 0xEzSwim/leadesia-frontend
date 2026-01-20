@@ -60,7 +60,7 @@ const Results: React.FC = () => {
           <div className="mb-12 lg:mb-0">
             <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Développement du cabinet</div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-black mb-6">
-              Transformez votre visibilité en dossiers signés.
+              Transformez votre visibilité en dossiers signés réguliers.
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
               La publicité en ligne est le seul levier offrant un volume de dossiers prévisible. Fini les "mois creux", place à une activité lissée sur l'année.

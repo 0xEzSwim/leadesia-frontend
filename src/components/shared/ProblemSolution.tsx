@@ -9,7 +9,7 @@ const ProblemSolution: React.FC = () => {
           <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">La réalité du cabinet individuel</div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">L'excellence juridique ne suffit plus pour remplir votre agenda.</h2>
           <p className="text-lg text-gray-600">
-            Dans un barreau saturé, les dossiers ne vont pas nécessairement aux meilleurs techniciens, mais aux cabinets les plus visibles. Cessez de dépendre de l'aléatoire du bouche-à-oreille pour assurer vos charges.
+            Dans un barreau saturé, les dossiers ne vont pas nécessairement aux meilleurs avocats, mais aux cabinets les plus visibles. Cessez de dépendre du hasard du bouche-à-oreille.
           </p>
         </div>
 
