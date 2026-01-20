@@ -55,9 +55,9 @@ const Results: React.FC = () => {
   return (
     <section id="resultats" className="py-24 bg-white scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-stretch">
           
-          <div className="mb-12 lg:mb-0">
+          <div className="mb-12 lg:mb-0 flex flex-col justify-center">
             <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Développement du cabinet</div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-black mb-6">
               Transformez votre visibilité en dossiers signés réguliers.
@@ -87,8 +87,8 @@ const Results: React.FC = () => {
             </blockquote>
           </div>
 
-          <div>
-            <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 h-[28rem] w-full flex flex-col">
+          <div className="flex flex-col h-full">
+            <div className="bg-white p-6 rounded-sm shadow-sm border border-gray-100 w-full flex flex-col flex-grow min-h-[28rem]">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-sm font-semibold text-gray-500 uppercase">
                   Comparatif d'évolution moyenne sur 6 mois*
