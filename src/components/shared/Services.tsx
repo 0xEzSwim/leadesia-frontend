@@ -10,7 +10,7 @@ const Services: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Notre Avantage Injuste</div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-            La puissance de la publicité digitale & la rigueur du filtrage humain.
+            La puissance de la publicité digitale.<br/>La rigueur du filtrage humain.
           </h2>
           <p className="text-lg text-gray-600">
             Nous utilisons les réseaux sociaux pour diffuser des publicités auprès des justiciables, et nos équipes les appellent pour vérifier le sérieux de leur demande. Vous ne recevez que des dossiers qualifiés.

@@ -9,7 +9,7 @@ const CaseStudies: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="text-sm font-bold text-brand-burgundy uppercase tracking-widest mb-2">Retour d'Expérience</div>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
-            Il avait la notoriété. Il lui manquait les dossiers.
+            Il avait la notoriété.<br/>Il lui manquait les dossiers.
           </h2>
           <p className="text-lg text-gray-600">
             Comment un confrère est passé de la simple visibilité sur les réseaux sociaux à l’obtention de dossiers grâce au système de publicité digitale et de qualification humaine.
@@ -39,7 +39,7 @@ const CaseStudies: React.FC = () => {
                 <ul className="space-y-2 list-inside list-disc text-gray-500">
                   <li>Publicités Meta (Facebook & Insta)</li>
                   <li>Qualification fine des prospects</li>
-                  <li className="font-semibold">Résultat : 15 RDV pris dans son agenda</li>
+                  <li className="font-semibold">Résultat : 15 RDV dans son agenda</li>
                 </ul>
               </div>
             </div>
