@@ -6,7 +6,7 @@ const Process: React.FC = () => {
     {
       icon: <MousePointerClick className="w-6 h-6" />,
       title: "Acquisition Digitale",
-      desc: "Nous déployons des campagnes publicitaires ultra-ciblées sur l'écosystème Meta (Facebook & Instagram) pour capter l'attention des contribuables en recherche de solutions."
+      desc: "Nous déployons des campagnes publicitaires ultra-ciblées sur l'écosystème Meta (Facebook & Instagram) pour capter l'attention des justiciables en recherche de solutions."
     },
     {
       icon: <Filter className="w-6 h-6" />,

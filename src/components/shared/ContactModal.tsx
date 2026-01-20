@@ -39,7 +39,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
           setIsSending(false);
         }, (error) => {
           console.log(error.text);
-          alert("Une erreur est survenue lors de l'envoi. Veuillez vérifier votre connexion ou nous contacter directement.");
+          alert("Une erreur est survenue lors de l'envoi. Veuillez vérifier votre connexion ou nous contacter directement à contact@leadesia.com.");
           setIsSending(false);
         });
     }
@@ -65,9 +65,9 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         {!isSubmitted ? (
           <>
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-serif font-bold text-brand-black mb-2">Audit Gratuit</h3>
+              <h3 className="text-2xl font-serif font-bold text-brand-black mb-2">Audit d’acquisition de dossiers (30 mins)</h3>
               <p className="text-sm text-gray-600">
-                Vérifiez si votre zone géographique est disponible pour notre programme d'acquisition.
+                Vérifiez si votre zone géographique est disponible pour nos services.
               </p>
             </div>
 
