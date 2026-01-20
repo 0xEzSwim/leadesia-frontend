@@ -6,9 +6,9 @@ const ProblemSolution: React.FC = () => {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">La réalité du marché juridique actuel</h2>
+          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">La réalité pour un cabinet individuel</h2>
           <p className="text-gray-600">
-            L'expertise technique ne suffit plus. Dans un marché concurrentiel, les meilleurs dossiers ne vont pas aux meilleurs avocats, mais aux plus visibles.
+            L'expertise technique ne suffit plus. Dans un marché concurrentiel, les meilleurs dossiers ne vont pas forcément aux experts les plus pointus, mais aux <strong>cabinets individuels</strong> les plus visibles.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ const ProblemSolution: React.FC = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <span className="text-brand-gold group-hover:text-brand-lightGold transition-colors duration-300 mr-3 text-lg">✓</span>
-                <p className="text-gray-100 text-sm">Flux prévisible de dossiers qualifiés (<strong className="font-semibold">jusqu'à 4-6/mois</strong> en rythme de croisière avec petit budget).</p>
+                <p className="text-gray-100 text-sm">Flux prévisible de dossiers qualifiés (<strong className="font-semibold">jusqu'à 4-6/mois</strong> en rythme de croisière).</p>
               </li>
               <li className="flex items-start">
                 <span className="text-brand-gold group-hover:text-brand-lightGold transition-colors duration-300 mr-3 text-lg">✓</span>

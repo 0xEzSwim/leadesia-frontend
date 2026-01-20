@@ -18,7 +18,7 @@ const Simulator: React.FC = () => {
             Simulateur de Croissance
           </h1>
           <p className="text-lg text-gray-600">
-            Visualisez concrètement l'impact de Leadesia sur votre cabinet. Ajustez les paramètres pour obtenir une projection personnalisée de votre croissance en nombre de dossiers et en chiffre d'affaires sur les 6 prochains mois.
+            Visualisez concrètement l'impact de Leadesia sur votre activité d'<strong>avocat indépendant</strong>. Ajustez les paramètres pour obtenir une projection personnalisée de votre croissance en nombre de dossiers et en chiffre d'affaires sur les 6 prochains mois.
           </p>
         </div>
         <GrowthSimulator onContactClick={openContact} isPage />
