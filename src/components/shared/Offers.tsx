@@ -16,7 +16,7 @@ const Offers: React.FC<OffersProps> = ({ onContactClick }) => {
       results: [
         { label: "Dossiers ciblés / mois", value: "2-3" },
         { label: "ROI moyen constaté", value: "x5" },
-        { label: "Visibilité immédiate", value: "Garanti" },
+        { label: "Résultat immédiat", value: "Dès le 1er mois" },
       ],
       buttonText: "Débloquer la Sérénité"
     },
