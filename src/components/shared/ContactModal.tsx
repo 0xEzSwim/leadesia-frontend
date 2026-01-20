@@ -65,7 +65,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
         {!isSubmitted ? (
           <>
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-serif font-bold text-brand-black mb-2">Audit d’acquisition de dossiers (30 mins)</h3>
+              <h3 className="text-2xl font-serif font-bold text-brand-black mb-2">Audit d’acquisition de dossiers</h3>
               <p className="text-sm text-gray-600">
                 Vérifiez si votre zone géographique est disponible pour nos services.
               </p>
