@@ -39,7 +39,7 @@ const Index: React.FC = () => {
       <ProblemSolution />
       <Services />
       <Results />
-      <CaseStudies />
+      /*<CaseStudies />*/
       <Offers onContactClick={openContact} />
       <Process />
       <GrowthSimulator onContactClick={openContact} />
