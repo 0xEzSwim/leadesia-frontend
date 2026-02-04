@@ -82,7 +82,7 @@ const Results: React.FC = () => {
                 "On est sur un marché hyper concurrentiel, avec des acteurs non-avocats qui empiètent sur le marché du droit, et il faut absolument qu’on montre qu’on offre des garanties que l’on est les seuls à offrir à nos clients. Et ça, pour le faire connaître, il n’y a que la publicité."
               </p>
               <footer className="mt-2 text-sm font-bold text-brand-burgundy not-italic">
-                — Maître Schmidt, Ancien Membre du Conseil de l’Ordre
+                — Ancien Membre du Conseil de l’Ordre
               </footer>
             </blockquote>
           </div>
